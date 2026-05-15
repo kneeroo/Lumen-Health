@@ -68,10 +68,10 @@ export default function HomePage() {
 
   return (
     <PageContainer>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-5'>
         {/* Hero banner */}
         <section>
-          <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-6 py-6 md:px-10 md:py-8 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
+          <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-8 py-9 md:px-12 md:py-12 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
             <div
               aria-hidden
               className='pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl'
@@ -81,24 +81,24 @@ export default function HomePage() {
               className='pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-emerald-300/10 blur-3xl'
             />
 
-            <div className='relative grid gap-6 md:grid-cols-[1fr_auto] md:items-center'>
+            <div className='relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center'>
               <div>
                 <Badge className='border-emerald-700 bg-emerald-100 text-[10px] tracking-wide text-emerald-800 uppercase hover:bg-emerald-100/80 dark:border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200'>
                   Welcome to Lumen Health
                 </Badge>
-                <h1 className='mt-3 text-3xl font-bold tracking-tight md:text-4xl'>
+                <h1 className='mt-3 text-4xl font-bold tracking-tight md:text-5xl'>
                   Your visit,{' '}
                   <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
                     in your words.
                   </span>
                 </h1>
-                <p className='text-muted-foreground mt-2 max-w-3xl text-sm leading-relaxed'>
+                <p className='text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed'>
                   Lumen Health is a patient-facing post-visit companion. It translates the clinical
                   note your doctor wrote into plain language, with action items you can check off,
                   medication instructions you can actually follow, and a glossary for every term you
                   did not catch.
                 </p>
-                <div className='mt-4 flex flex-wrap gap-2'>
+                <div className='mt-5 flex flex-wrap gap-3'>
                   <Button asChild className='shadow-sm shadow-emerald-600/20'>
                     <Link href={`/patient-portal?visit=${latestVisit.id}`}>
                       Open your most recent visit
@@ -121,9 +121,9 @@ export default function HomePage() {
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-5 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-7 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
                     <Icons.heartbeat
-                      className='size-20 text-emerald-600 dark:text-emerald-400'
+                      className='size-24 text-emerald-600 dark:text-emerald-400'
                       strokeWidth={1.5}
                     />
                   </div>
@@ -135,9 +135,9 @@ export default function HomePage() {
 
         {/* Demo disclaimer */}
         <section>
-          <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3 text-xs text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
-            <div className='flex items-start gap-2'>
-              <Icons.warning className='mt-0.5 size-3.5 shrink-0' />
+          <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3.5 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
+            <div className='flex items-start gap-2.5'>
+              <Icons.warning className='mt-0.5 size-4 shrink-0' />
               <div>
                 <span className='font-semibold'>This is a demo, not a real medical record.</span>{' '}
                 Patient data and clinicians shown here are fictional. Do not use Lumen Health for
@@ -150,29 +150,29 @@ export default function HomePage() {
 
         {/* Quick guide */}
         <section>
-          <h2 className='text-base font-semibold tracking-tight'>What is in here</h2>
-          <p className='text-muted-foreground mt-0.5 text-xs'>
+          <h2 className='text-lg font-semibold tracking-tight'>What is in here</h2>
+          <p className='text-muted-foreground mt-0.5 text-sm'>
             Six places to explore. Click a card to jump in.
           </p>
-          <div className='mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3'>
             {features.map((f) => {
               const Icon = Icons[f.icon];
               const color = navIconColor[f.href];
               const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
               return (
                 <Link key={f.href} href={f.href} className='group block'>
-                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 h-full gap-2 py-3 transition-colors'>
+                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 h-full gap-2 py-4 transition-colors'>
                     <CardHeader className='gap-1 px-4'>
-                      <div className='flex items-center gap-2.5'>
+                      <div className='flex items-center gap-3'>
                         <div
-                          className={`flex size-8 shrink-0 items-center justify-center rounded-md ${boxClass}`}
+                          className={`flex size-9 shrink-0 items-center justify-center rounded-md ${boxClass}`}
                         >
-                          <Icon className='size-4' />
+                          <Icon className='size-5' />
                         </div>
-                        <CardTitle className='text-sm'>{f.title}</CardTitle>
+                        <CardTitle className='text-base'>{f.title}</CardTitle>
                       </div>
                     </CardHeader>
-                    <CardContent className='text-muted-foreground px-4 text-xs leading-snug'>
+                    <CardContent className='text-muted-foreground px-4 text-sm leading-snug'>
                       {f.description}
                     </CardContent>
                   </Card>
@@ -185,12 +185,12 @@ export default function HomePage() {
         {/* About */}
         <section>
           <Card>
-            <CardContent className='space-y-1.5 py-3'>
+            <CardContent className='space-y-2 py-4'>
               <div className='flex items-center gap-2'>
-                <Icons.info className='text-muted-foreground size-3.5' />
-                <span className='text-xs font-semibold'>About this project</span>
+                <Icons.info className='text-muted-foreground size-4' />
+                <span className='text-sm font-semibold'>About this project</span>
               </div>
-              <p className='text-muted-foreground text-xs leading-relaxed'>
+              <p className='text-muted-foreground text-sm leading-relaxed'>
                 Lumen Health is a thought experiment by{' '}
                 <a
                   href='https://www.linkedin.com/in/nirooa/'
@@ -201,17 +201,19 @@ export default function HomePage() {
                   Niroo Arjuna
                 </a>{' '}
                 on what could sit between a clinical scribe (like Heidi Scribe) and patient
-                messaging (like Heidi Comms).{' '}
-                <a
-                  href='https://github.com/kneeroo/Lumen-Health'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='hover:text-foreground inline-flex items-center gap-1 underline-offset-4 hover:underline'
-                >
-                  <Icons.github className='size-3' />
-                  kneeroo/Lumen-Health
-                </a>
+                messaging (like Heidi Comms). Most patients forget the majority of what was said
+                within minutes of leaving the consultation. Lumen Health is the consumer surface
+                that translates the visit back to them in language they can act on.
               </p>
+              <a
+                href='https://github.com/kneeroo/Lumen-Health'
+                target='_blank'
+                rel='noreferrer'
+                className='text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 hover:underline'
+              >
+                <Icons.github className='size-3.5' />
+                kneeroo/Lumen-Health
+              </a>
             </CardContent>
           </Card>
         </section>
