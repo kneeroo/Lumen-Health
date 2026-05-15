@@ -54,9 +54,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         )}
       >
         <NextTopLoader
-          color='var(--primary)'
-          height={3}
-          shadow='0 0 8px var(--primary)'
+          color='#000'
+          height={4}
+          shadow='0 0 10px rgba(0,0,0,0.5),0 0 5px rgba(0,0,0,0.3)'
           showSpinner={false}
           easing='ease'
           speed={300}

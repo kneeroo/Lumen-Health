@@ -8,7 +8,7 @@ import { NotificationCenter } from '@/features/notifications/components/notifica
 
 export default function Header() {
   return (
-    <header className='bg-background/60 sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between backdrop-blur-md md:h-14'>
+    <header className='from-muted/80 to-background/60 sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between bg-gradient-to-b backdrop-blur-md md:h-14'>
       {/* Left padding matches the PageContainer (px-4 md:px-6) so the trigger
           and breadcrumb sit on the same vertical line as the page heading. */}
       <div className='flex items-center gap-2 px-4 md:px-6'>

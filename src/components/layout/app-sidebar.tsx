@@ -51,13 +51,12 @@ export default function AppSidebar() {
             >
               {/* Brand mark — gets the active state styling when the user is
                   on the home page, so it reads like the other nav items.
-                  Otherwise the heart shows in its dedicated brand colour
-                  (red) for visual identity. */}
+                  Otherwise the heart shows in the green brand colour. */}
               <div
                 className={
                   pathname === '/dashboard/home'
                     ? 'bg-primary text-primary-foreground flex size-9 shrink-0 items-center justify-center rounded-md'
-                    : `border-red-200 bg-red-500/10 ${iconTextClass.red} flex size-9 shrink-0 items-center justify-center rounded-md border`
+                    : `border-emerald-200 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md border`
                 }
               >
                 <Icons.heartbeat className='size-5' />
