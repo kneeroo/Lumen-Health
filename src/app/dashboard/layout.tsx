@@ -17,9 +17,13 @@ export const metadata: Metadata = {
 };
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  // Persisting the sidebar state in the cookie.
+  // Sidebar defaults to expanded so labels are visible. The user can
+  // collapse it via the rail; that preference is then remembered in the
+  // cookie. (Previously the cookie check defaulted to closed when no
+  // cookie was set, which hid all the nav labels on first visit.)
   const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true';
+  const cookieValue = cookieStore.get('sidebar_state')?.value;
+  const defaultOpen = cookieValue === undefined ? true : cookieValue === 'true';
   return (
     <KBar>
       <SidebarProvider defaultOpen={defaultOpen}>
