@@ -55,8 +55,8 @@ export default function AppSidebar() {
               <div
                 className={
                   pathname === '/home'
-                    ? 'bg-primary text-primary-foreground flex size-9 shrink-0 items-center justify-center rounded-md'
-                    : `border-emerald-200 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md border`
+                    ? 'bg-primary flex size-9 shrink-0 items-center justify-center rounded-md text-emerald-400 dark:text-emerald-300'
+                    : `border-2 border-emerald-700 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md`
                 }
               >
                 <Icons.heartbeat className='size-5' />
@@ -95,10 +95,14 @@ export default function AppSidebar() {
                   pathname === item.url ||
                   (item.url === '/visits' && pathname.startsWith('/patient-portal'));
                 const iconColor = navIconColor[item.url];
-                // Icon takes its per-route tint only when not active. The
-                // active button uses bg-primary/text-primary-foreground so
-                // the icon becomes white on a dark background.
-                const iconClass = !isActive && iconColor ? iconTextClass[iconColor] : '';
+                // Icon stays green in both states. Inactive uses a darker
+                // emerald against the light sidebar background; active uses
+                // a lighter emerald that pops on the bg-primary dark button.
+                const iconClass = isActive
+                  ? 'text-emerald-400 dark:text-emerald-300'
+                  : iconColor
+                    ? iconTextClass[iconColor]
+                    : '';
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton

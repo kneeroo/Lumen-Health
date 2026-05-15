@@ -83,7 +83,7 @@ export default function HomePage() {
 
           <div className='relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center'>
             <div>
-              <Badge className='border-emerald-200 bg-emerald-100 text-[10px] tracking-wide text-emerald-800 uppercase hover:bg-emerald-100/80 dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300'>
+              <Badge className='border-emerald-700 bg-emerald-100 text-[10px] tracking-wide text-emerald-800 uppercase hover:bg-emerald-100/80 dark:border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200'>
                 Welcome to Lumen Health
               </Badge>
               <h1 className='mt-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl'>

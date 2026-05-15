@@ -53,13 +53,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           fontVariables
         )}
       >
+        {/* High-contrast emerald loading bar with a min initial position so
+            even fast (prefetched) navigations show a visible flash. */}
         <NextTopLoader
-          color='#000'
+          color='#059669'
           height={4}
-          shadow='0 0 10px rgba(0,0,0,0.5),0 0 5px rgba(0,0,0,0.3)'
+          initialPosition={0.3}
+          crawlSpeed={150}
+          speed={400}
+          shadow='0 0 10px rgba(5,150,105,0.6),0 0 5px rgba(5,150,105,0.4)'
           showSpinner={false}
           easing='ease'
-          speed={300}
         />
         <NuqsAdapter>
           <ThemeProvider
