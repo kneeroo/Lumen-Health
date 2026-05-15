@@ -54,13 +54,12 @@ export default function AppSidebar() {
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
                       asChild
-                      size='lg'
                       tooltip={item.title}
                       isActive={isActive}
-                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground my-0.5 gap-3 rounded-md font-medium'
+                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!p-0 [&>svg]:!size-5'
                     >
                       <Link href={item.url}>
-                        <Icon className='!size-5' />
+                        <Icon />
                         <span className='text-sm'>{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
