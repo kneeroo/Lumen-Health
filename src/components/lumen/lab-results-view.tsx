@@ -1,7 +1,6 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Icons } from '@/components/icons';
 import { flagColor, flagLabel, type LabFlag, type LabResult } from '@/lib/mock-labs';
 import { useMemo, useState } from 'react';
 
@@ -138,29 +137,26 @@ export function LabResultsView({ labs }: { labs: LabResult[] }) {
               <div className='space-y-2'>
                 {g.items.map((l) => (
                   <Card key={l.id}>
-                    <CardContent className='flex items-start justify-between gap-3 px-4 py-4'>
-                      <div className='min-w-0 flex-1'>
-                        <div className='flex flex-wrap items-center gap-2'>
-                          <span className='font-medium'>{l.name}</span>
-                          <span
-                            className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${flagColor[l.flag]}`}
-                          >
-                            {flagLabel[l.flag]}
-                          </span>
-                        </div>
-                        <div className='mt-2 flex items-baseline gap-3'>
-                          <div className='text-2xl font-semibold tabular-nums'>{l.value}</div>
-                          {l.unit && <div className='text-muted-foreground text-sm'>{l.unit}</div>}
-                        </div>
-                        <div className='text-muted-foreground mt-1 text-xs'>
-                          Reference range: {l.referenceRange}
-                          {l.unit ? ` ${l.unit}` : ''}
-                        </div>
-                        {l.notes && (
-                          <p className='border-border/60 mt-3 border-t pt-3 text-sm'>{l.notes}</p>
-                        )}
+                    <CardContent className='px-4 py-4'>
+                      <div className='flex flex-wrap items-center gap-2'>
+                        <span className='font-medium'>{l.name}</span>
+                        <span
+                          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium ${flagColor[l.flag]}`}
+                        >
+                          {flagLabel[l.flag]}
+                        </span>
                       </div>
-                      <Icons.reportMedical className='text-muted-foreground size-5 shrink-0' />
+                      <div className='mt-2 flex items-baseline gap-3'>
+                        <div className='text-2xl font-semibold tabular-nums'>{l.value}</div>
+                        {l.unit && <div className='text-muted-foreground text-sm'>{l.unit}</div>}
+                      </div>
+                      <div className='text-muted-foreground mt-1 text-xs'>
+                        Reference range: {l.referenceRange}
+                        {l.unit ? ` ${l.unit}` : ''}
+                      </div>
+                      {l.notes && (
+                        <p className='border-border/60 mt-3 border-t pt-3 text-sm'>{l.notes}</p>
+                      )}
                     </CardContent>
                   </Card>
                 ))}

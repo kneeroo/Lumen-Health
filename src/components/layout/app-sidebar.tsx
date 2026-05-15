@@ -56,7 +56,7 @@ export default function AppSidebar() {
                       asChild
                       tooltip={item.title}
                       isActive={isActive}
-                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!p-0 [&>svg]:!size-5'
+                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:[&>span]:hidden group-data-[collapsible=icon]:[&_a>span]:hidden'
                     >
                       <Link href={item.url}>
                         <Icon />

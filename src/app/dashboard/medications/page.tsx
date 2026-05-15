@@ -1,9 +1,9 @@
 import PageContainer from '@/components/layout/page-container';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/icons';
 import { visits } from '@/lib/mock-visits';
+import { DetailsButton, RefillButton } from '@/components/lumen/medication-actions';
 
 export const metadata = {
   title: 'Medications · Lumen Health'
@@ -84,13 +84,8 @@ export default function MedicationsPage() {
                     </div>
                   </div>
                   <div className='flex gap-2 pt-1'>
-                    <Button size='sm' variant='outline' className='flex-1'>
-                      <Icons.send className='mr-1.5 size-3' />
-                      Request refill
-                    </Button>
-                    <Button size='sm' variant='ghost'>
-                      Details
-                    </Button>
+                    <RefillButton med={m} />
+                    <DetailsButton med={m} />
                   </div>
                 </CardContent>
               </Card>
