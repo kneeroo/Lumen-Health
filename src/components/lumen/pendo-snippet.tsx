@@ -17,40 +17,133 @@ declare global {
 const PENDO_API_KEY = process.env.NEXT_PUBLIC_PENDO_API_KEY;
 
 /**
- * Pendo agent loader for Lumen Health.
+ * Roster of mock demo patients. Each browser session is randomly assigned
+ * one of these so the Pendo dashboard fills with multiple distinct
+ * visitors over time — critical for Paths and Funnel reports, which look
+ * empty when only one visitor exists.
  *
- * Without NEXT_PUBLIC_PENDO_API_KEY this component is a no-op so local
- * dev continues to work. With the key set, it loads the Pendo agent
- * and initializes a structured demo visitor + account so segments,
- * Paths reports and Guides all work against a real-looking identity
- * instead of an anonymous random ID.
- *
- * The demo patient identity is hardcoded because Lumen Health is a
- * public, login-less demo — there's no auth context to read from.
+ * All identities are fictional. AU postcodes / states match real cities
+ * so geo segments work. created_at dates are staggered to populate
+ * "Time on platform" segments.
  */
-function getOrCreateAnonId(): string {
-  if (typeof window === 'undefined') return 'ssr';
-  const KEY = 'lumen-pendo-visitor-id';
-  let id = window.localStorage.getItem(KEY);
-  if (!id) {
-    id = 'demo-' + Math.random().toString(36).slice(2, 10);
-    window.localStorage.setItem(KEY, id);
+type DemoPatient = {
+  id: string;
+  email: string;
+  full_name: string;
+  state: string;
+  postcode: string;
+  age: number;
+  created_at: string;
+};
+
+const PATIENT_ROSTER: DemoPatient[] = [
+  {
+    id: 'demo-patient-001',
+    email: 'daniella.patrick@demo.lumenhealth.app',
+    full_name: 'Daniella Patrick',
+    state: 'VIC',
+    postcode: '3000',
+    age: 37,
+    created_at: '2024-01-15'
+  },
+  {
+    id: 'demo-patient-002',
+    email: 'james.okafor@demo.lumenhealth.app',
+    full_name: 'James Okafor',
+    state: 'NSW',
+    postcode: '2000',
+    age: 52,
+    created_at: '2024-03-22'
+  },
+  {
+    id: 'demo-patient-003',
+    email: 'maya.chen@demo.lumenhealth.app',
+    full_name: 'Maya Chen',
+    state: 'QLD',
+    postcode: '4000',
+    age: 29,
+    created_at: '2024-06-08'
+  },
+  {
+    id: 'demo-patient-004',
+    email: 'sam.taylor@demo.lumenhealth.app',
+    full_name: 'Sam Taylor',
+    state: 'WA',
+    postcode: '6000',
+    age: 44,
+    created_at: '2024-08-30'
+  },
+  {
+    id: 'demo-patient-005',
+    email: 'priya.naidoo@demo.lumenhealth.app',
+    full_name: 'Priya Naidoo',
+    state: 'SA',
+    postcode: '5000',
+    age: 61,
+    created_at: '2024-11-12'
+  },
+  {
+    id: 'demo-patient-006',
+    email: 'ethan.wright@demo.lumenhealth.app',
+    full_name: 'Ethan Wright',
+    state: 'TAS',
+    postcode: '7000',
+    age: 33,
+    created_at: '2025-02-04'
+  },
+  {
+    id: 'demo-patient-007',
+    email: 'aroha.mitchell@demo.lumenhealth.app',
+    full_name: 'Aroha Mitchell',
+    state: 'ACT',
+    postcode: '2600',
+    age: 48,
+    created_at: '2025-04-18'
+  },
+  {
+    id: 'demo-patient-008',
+    email: 'liam.osullivan@demo.lumenhealth.app',
+    full_name: 'Liam O’Sullivan',
+    state: 'VIC',
+    postcode: '3141',
+    age: 26,
+    created_at: '2025-07-09'
   }
-  return id;
+];
+
+/**
+ * Picks a patient for the current browser session. Stored in
+ * sessionStorage so reloading the same tab keeps the same visitor
+ * (segments work within session), but closing the tab or opening a new
+ * one assigns a fresh visitor.
+ */
+function getSessionPatient(): DemoPatient {
+  if (typeof window === 'undefined') return PATIENT_ROSTER[0];
+  const KEY = 'lumen-pendo-session-patient';
+  const stored = window.sessionStorage.getItem(KEY);
+  if (stored) {
+    const found = PATIENT_ROSTER.find((p) => p.id === stored);
+    if (found) return found;
+  }
+  const picked = PATIENT_ROSTER[Math.floor(Math.random() * PATIENT_ROSTER.length)];
+  window.sessionStorage.setItem(KEY, picked.id);
+  return picked;
 }
 
 export function PendoSnippet() {
   useEffect(() => {
     if (!PENDO_API_KEY || !window.pendo) return;
+    const patient = getSessionPatient();
     window.pendo.initialize({
       visitor: {
-        id: 'demo-patient-001',
-        email: 'demo@lumenhealth.app',
-        full_name: 'Demo Patient',
+        id: patient.id,
+        email: patient.email,
+        full_name: patient.full_name,
         role: 'patient',
-        created_at: '2024-01-15',
-        anonymous_session_id: getOrCreateAnonId(),
-        state: 'VIC',
+        created_at: patient.created_at,
+        state: patient.state,
+        postcode: patient.postcode,
+        age: patient.age,
         country: 'AU',
         is_demo_user: true
       },
