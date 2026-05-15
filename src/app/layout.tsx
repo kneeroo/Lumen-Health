@@ -53,7 +53,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           fontVariables
         )}
       >
-        <NextTopLoader color='var(--primary)' showSpinner={false} />
+        <NextTopLoader
+          color='var(--primary)'
+          height={3}
+          shadow='0 0 8px var(--primary)'
+          showSpinner={false}
+          easing='ease'
+          speed={300}
+        />
         <NuqsAdapter>
           <ThemeProvider
             attribute='class'

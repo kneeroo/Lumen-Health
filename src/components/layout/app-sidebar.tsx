@@ -67,17 +67,20 @@ export default function AppSidebar() {
                     pathname.startsWith('/dashboard/patient-portal'));
                 return (
                   <SidebarMenuItem key={item.title}>
-                    {/* Plain button + router.push (no asChild + Link) — sidesteps
-                        the Slot / Link forwarding chain that was making clicks
-                        unreliable in collapsed mode for some items. */}
+                    {/* asChild + Link: Link prefetches the route as soon as it
+                        mounts, so clicking feels instant. onMouseEnter also
+                        triggers an eager prefetch as a fallback in case the
+                        viewport prefetch hasn't happened yet. */}
                     <SidebarMenuButton
+                      asChild
                       tooltip={item.title}
                       isActive={isActive}
-                      onClick={() => router.push(item.url)}
                       className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
-                      <Icon />
-                      <span className='text-sm'>{item.title}</span>
+                      <Link href={item.url} prefetch onMouseEnter={() => router.prefetch(item.url)}>
+                        <Icon />
+                        <span className='text-sm'>{item.title}</span>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
