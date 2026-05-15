@@ -1,5 +1,4 @@
 import PageContainer from '@/components/layout/page-container';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/icons';
@@ -83,10 +82,7 @@ export default function HomePage() {
 
             <div className='relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center'>
               <div>
-                <Badge className='border-emerald-700 bg-emerald-100 text-[10px] tracking-wide text-emerald-800 uppercase hover:bg-emerald-100/80 dark:border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200'>
-                  Welcome to Lumen Health
-                </Badge>
-                <h1 className='mt-3 text-4xl font-bold tracking-tight md:text-5xl'>
+                <h1 className='text-4xl font-bold tracking-tight md:text-5xl'>
                   Your visit,{' '}
                   <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
                     in your words.
@@ -138,11 +134,16 @@ export default function HomePage() {
           <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3.5 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
             <div className='flex items-start gap-2.5'>
               <Icons.warning className='mt-0.5 size-4 shrink-0' />
-              <div>
-                <span className='font-semibold'>This is a demo, not a real medical record.</span>{' '}
-                Patient data and clinicians shown here are fictional. Do not use Lumen Health for
-                actual clinical care. For emergencies, call 000 (or your local emergency number).
-                For urgent concerns, call your clinic directly.
+              <div className='space-y-1.5'>
+                <p>
+                  <span className='font-semibold'>This is a demo, not a real medical record.</span>{' '}
+                  Patient data and clinicians shown here are fictional. Do not use Lumen Health for
+                  actual clinical care.
+                </p>
+                <p>
+                  For emergencies, call 000 (or your local emergency number). For urgent concerns,
+                  call your clinic directly.
+                </p>
               </div>
             </div>
           </div>
