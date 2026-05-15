@@ -10,7 +10,7 @@ export const navGroups: NavGroup[] = [
     items: [
       {
         title: 'My Visits',
-        url: '/dashboard/overview',
+        url: '/visits',
         icon: 'visit',
         isActive: false,
         shortcut: ['m', 'v'],
@@ -18,7 +18,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'Action Items',
-        url: '/dashboard/actions',
+        url: '/actions',
         icon: 'checks',
         isActive: false,
         shortcut: ['a', 'a'],
@@ -26,7 +26,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'Medications',
-        url: '/dashboard/medications',
+        url: '/medications',
         icon: 'pill',
         isActive: false,
         shortcut: ['m', 'd'],
@@ -34,7 +34,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'Lab Results',
-        url: '/dashboard/labs',
+        url: '/labs',
         icon: 'reportMedical',
         isActive: false,
         shortcut: ['l', 'l'],
@@ -42,7 +42,7 @@ export const navGroups: NavGroup[] = [
       },
       {
         title: 'Messages',
-        url: '/dashboard/chat',
+        url: '/chat',
         icon: 'chat',
         isActive: false,
         shortcut: ['m', 'm'],
@@ -55,7 +55,7 @@ export const navGroups: NavGroup[] = [
     items: [
       {
         title: 'Notifications',
-        url: '/dashboard/notifications',
+        url: '/notifications',
         icon: 'notification',
         isActive: false,
         shortcut: ['n', 'n'],

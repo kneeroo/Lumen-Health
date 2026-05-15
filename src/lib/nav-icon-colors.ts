@@ -6,13 +6,13 @@
 export type IconColor = 'red' | 'green';
 
 export const navIconColor: Record<string, IconColor> = {
-  '/dashboard/home': 'green',
-  '/dashboard/overview': 'green',
-  '/dashboard/actions': 'green',
-  '/dashboard/medications': 'green',
-  '/dashboard/labs': 'green',
-  '/dashboard/chat': 'green',
-  '/dashboard/notifications': 'green'
+  '/home': 'green',
+  '/visits': 'green',
+  '/actions': 'green',
+  '/medications': 'green',
+  '/labs': 'green',
+  '/chat': 'green',
+  '/notifications': 'green'
 };
 
 // Inactive icon-only colour (for the sidebar nav buttons).

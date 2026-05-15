@@ -6,7 +6,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Icons } from '@/components/icons';
 import { ActionStreak } from './action-streak';
 import { useEffect, useMemo, useState } from 'react';
-import type { AggregatedAction } from '@/app/dashboard/actions/page';
+import type { AggregatedAction } from '@/app/(dashboard)/actions/page';
 
 const ONGOING_KEY_PREFIX = 'action-done:';
 

@@ -21,7 +21,7 @@ export function AskQuestionButton({ context }: { context: PendingQuestion }) {
     if (typeof window !== 'undefined') {
       window.sessionStorage.setItem(PENDING_QUESTION_KEY, JSON.stringify(context));
     }
-    router.push('/dashboard/chat');
+    router.push('/chat');
   }
 
   return (

@@ -13,7 +13,7 @@ function isOngoing(due: string): boolean {
 }
 
 // Composite IDs ensure the same localStorage key is used here AND on the
-// /dashboard/actions aggregated view. Format: `${visitId}-${item.id}`.
+// /actions aggregated view. Format: `${visitId}-${item.id}`.
 function compositeId(visitId: string, itemId: string): string {
   return `${visitId}-${itemId}`;
 }

@@ -25,7 +25,7 @@ export function VisitCard({ visit, isLatest }: { visit: Visit; isLatest?: boolea
       </CardHeader>
       <CardContent className='mt-auto'>
         <Button asChild className='w-full' data-pendo-id='open-patient-portal'>
-          <Link href={`/dashboard/patient-portal?visit=${visit.id}`}>View summary</Link>
+          <Link href={`/patient-portal?visit=${visit.id}`}>View summary</Link>
         </Button>
       </CardContent>
     </Card>

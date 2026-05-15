@@ -38,15 +38,15 @@ export default function AppSidebar() {
     <Sidebar collapsible='icon'>
       {/* Header height matches the page Header (h-16 / md:h-14) so the brand
           mark aligns vertically with the breadcrumb across the divider.
-          The whole brand mark links to /dashboard/home — the welcome page
+          The whole brand mark links to /home — the welcome page
           with the quick guide. */}
       <SidebarHeader className='h-16 justify-center !p-0 md:h-14'>
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href='/dashboard/home'
+              href='/home'
               aria-label='Lumen Health home'
-              onMouseEnter={() => router.prefetch('/dashboard/home')}
+              onMouseEnter={() => router.prefetch('/home')}
               className='hover:bg-sidebar-accent/50 flex h-full w-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
             >
               {/* Brand mark — gets the active state styling when the user is
@@ -54,7 +54,7 @@ export default function AppSidebar() {
                   Otherwise the heart shows in the green brand colour. */}
               <div
                 className={
-                  pathname === '/dashboard/home'
+                  pathname === '/home'
                     ? 'bg-primary text-primary-foreground flex size-9 shrink-0 items-center justify-center rounded-md'
                     : `border-emerald-200 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md border`
                 }
@@ -93,8 +93,7 @@ export default function AppSidebar() {
                 // (which is opened from a visit card on My Visits).
                 const isActive =
                   pathname === item.url ||
-                  (item.url === '/dashboard/overview' &&
-                    pathname.startsWith('/dashboard/patient-portal'));
+                  (item.url === '/visits' && pathname.startsWith('/patient-portal'));
                 const iconColor = navIconColor[item.url];
                 // Icon takes its per-route tint only when not active. The
                 // active button uses bg-primary/text-primary-foreground so

@@ -23,42 +23,42 @@ const features: Feature[] = [
     title: 'My Visits',
     description:
       'Every consultation, summarised in plain language. Open a visit to see what was discussed, what you agreed to do, and what was prescribed.',
-    href: '/dashboard/overview',
+    href: '/visits',
     icon: 'visit'
   },
   {
     title: 'Action Items',
     description:
       'Everything your care team has asked you to do, across every visit. Daily tasks track a weekly streak. One-off tasks check off.',
-    href: '/dashboard/actions',
+    href: '/actions',
     icon: 'checks'
   },
   {
     title: 'Medications',
     description:
       'Current and past prescriptions. Tap a medication for dose, schedule, side effects, and what to call about. Request refills with one click.',
-    href: '/dashboard/medications',
+    href: '/medications',
     icon: 'pill'
   },
   {
     title: 'Lab Results',
     description:
       'Test results grouped by visit, with the reference range and a colour-coded flag so you know whether a number is in target.',
-    href: '/dashboard/labs',
+    href: '/labs',
     icon: 'reportMedical'
   },
   {
     title: 'Messages',
     description:
       'Private conversations with your care team. Routine replies arrive within one business day. Use Ask a Question on any visit to start a thread with context attached.',
-    href: '/dashboard/chat',
+    href: '/chat',
     icon: 'chat'
   },
   {
     title: 'Notifications',
     description:
       'Lab results, message replies, appointment reminders, and action item nudges, all in one place.',
-    href: '/dashboard/notifications',
+    href: '/notifications',
     icon: 'notification'
   }
 ];
@@ -68,31 +68,71 @@ export default function HomePage() {
 
   return (
     <PageContainer>
-      {/* Hero */}
+      {/* Hero banner */}
       <section className='mb-8'>
-        <div className='flex items-center gap-2'>
-          <Badge variant='secondary' className='text-[10px] tracking-wide uppercase'>
-            Welcome to Lumen Health
-          </Badge>
-        </div>
-        <h1 className='mt-3 text-3xl font-bold tracking-tight md:text-4xl'>
-          Your visit, in your words.
-        </h1>
-        <p className='text-muted-foreground mt-3 leading-relaxed'>
-          Lumen Health is a patient-facing post-visit companion. It translates the clinical note
-          your doctor wrote into plain language, with action items you can check off, medication
-          instructions you can actually follow, and a glossary for every term you did not catch.
-        </p>
-        <div className='mt-5 flex flex-wrap gap-3'>
-          <Button asChild>
-            <Link href={`/dashboard/patient-portal?visit=${latestVisit.id}`}>
-              <Icons.arrowRight className='mr-2 size-4' />
-              Open your most recent visit
-            </Link>
-          </Button>
-          <Button asChild variant='outline'>
-            <Link href='/dashboard/overview'>Browse all visits</Link>
-          </Button>
+        <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-6 py-12 md:px-12 md:py-16 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
+          {/* Decorative blurs */}
+          <div
+            aria-hidden
+            className='pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl'
+          />
+          <div
+            aria-hidden
+            className='pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-emerald-300/10 blur-3xl'
+          />
+
+          <div className='relative grid gap-8 md:grid-cols-[1fr_auto] md:items-center'>
+            <div>
+              <Badge className='border-emerald-200 bg-emerald-100 text-[10px] tracking-wide text-emerald-800 uppercase hover:bg-emerald-100/80 dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300'>
+                Welcome to Lumen Health
+              </Badge>
+              <h1 className='mt-4 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl'>
+                Your visit,
+                <br className='hidden sm:block' />{' '}
+                <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
+                  in your words.
+                </span>
+              </h1>
+              <p className='text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed md:text-lg'>
+                Lumen Health is a patient-facing post-visit companion. It translates the clinical
+                note your doctor wrote into plain language, with action items you can check off,
+                medication instructions you can actually follow, and a glossary for every term you
+                did not catch.
+              </p>
+              <div className='mt-7 flex flex-wrap gap-3'>
+                <Button asChild size='lg' className='shadow-md shadow-emerald-600/20'>
+                  <Link href={`/patient-portal?visit=${latestVisit.id}`}>
+                    Open your most recent visit
+                    <Icons.arrowRight className='ml-2 size-4' />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant='outline'
+                  size='lg'
+                  className='border-emerald-200 bg-white/70 backdrop-blur-sm hover:bg-white dark:bg-card/60'
+                >
+                  <Link href='/visits'>Browse all visits</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Decorative heartbeat artwork on the right */}
+            <div className='hidden justify-center lg:flex'>
+              <div className='relative'>
+                <div
+                  aria-hidden
+                  className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
+                />
+                <div className='rounded-3xl border border-emerald-200/70 bg-white/70 p-10 shadow-2xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
+                  <Icons.heartbeat
+                    className='size-32 text-emerald-600 dark:text-emerald-400'
+                    strokeWidth={1.5}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

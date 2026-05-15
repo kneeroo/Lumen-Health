@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation';
 import { useNotificationStore } from '../utils/store';
 
 const actionRoutes: Record<string, string> = {
-  'open-portal': '/dashboard/patient-portal',
-  'open-messages': '/dashboard/chat'
+  'open-portal': '/patient-portal',
+  'open-messages': '/chat'
 };
 
 export default function NotificationsPage() {
