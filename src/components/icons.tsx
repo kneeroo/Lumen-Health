@@ -87,7 +87,6 @@ import {
   IconUsers,
   IconVideo,
   IconCrown,
-  IconHeartbeat,
   IconStethoscope,
   IconPill,
   IconReportMedical,
@@ -95,8 +94,43 @@ import {
   IconActivity,
   IconX
 } from '@tabler/icons-react';
+import * as React from 'react';
 
 export type Icon = React.ComponentType<IconProps>;
+
+/**
+ * Lumen Health brand mark — a light bulb outline with the familiar
+ * heart-and-heartbeat-line graphic sitting inside the dome. Kept in the
+ * same Tabler outline style (24x24, stroke-only, currentColor) so it
+ * inherits the surrounding text color and accepts the same className /
+ * strokeWidth / size props as any Tabler icon.
+ */
+function IconLumenLogo({ size = 24, stroke = 2, ...props }: IconProps & { stroke?: number }) {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={size}
+      height={size}
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth={stroke}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      {...props}
+    >
+      {/* Light bulb body */}
+      <path d='M8.5 18a7 7 0 1 1 7 0' />
+      <path d='M9 18h6' />
+      <path d='M10 21h4' />
+      {/* Tabler IconHeartbeat (heart + EKG line) scaled into the dome */}
+      <g transform='translate(7 5) scale(0.42)' vectorEffect='non-scaling-stroke'>
+        <path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' />
+        <path d='M3 13h2l2 -2l4 4l2 -2l3 3h5' />
+      </g>
+    </svg>
+  );
+}
 
 export const Icons = {
   // General
@@ -219,7 +253,7 @@ export const Icons = {
   toastLoading: IconLoader2,
 
   // Healthcare
-  heartbeat: IconHeartbeat,
+  heartbeat: IconLumenLogo,
   stethoscope: IconStethoscope,
   pill: IconPill,
   reportMedical: IconReportMedical,
