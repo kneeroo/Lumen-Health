@@ -1,6 +1,6 @@
 import PageContainer from '@/components/layout/page-container';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/icons';
 import { getMostRecentVisit } from '@/lib/mock-visits';
 import { iconBoxClass, navIconColor } from '@/lib/nav-icon-colors';
@@ -152,6 +152,104 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* About this project — prominent banner */}
+        <section>
+          <div className='relative overflow-hidden rounded-2xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50 via-card to-indigo-50/40 px-8 py-9 md:px-12 md:py-12 dark:border-indigo-900/40 dark:from-indigo-950/40 dark:via-card dark:to-indigo-950/20'>
+            <div
+              aria-hidden
+              className='pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl'
+            />
+            <div
+              aria-hidden
+              className='pointer-events-none absolute -bottom-20 right-1/3 h-56 w-56 rounded-full bg-indigo-300/10 blur-3xl'
+            />
+
+            <div className='relative md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-8'>
+              <div className='hidden md:flex'>
+                <div className='relative'>
+                  <div
+                    aria-hidden
+                    className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
+                  />
+                  <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-7 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
+                    <Icons.info
+                      className='size-24 text-indigo-600 dark:text-indigo-400'
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className='flex items-start justify-between gap-4'>
+                  <div>
+                    <p className='text-xs font-semibold tracking-widest text-indigo-700 uppercase dark:text-indigo-300'>
+                      About this project
+                    </p>
+                    <h2 className='mt-2 text-3xl font-bold tracking-tight md:text-4xl'>
+                      A thought experiment in{' '}
+                      <span className='bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-200'>
+                        post-visit care.
+                      </span>
+                    </h2>
+                  </div>
+                  <div className='relative shrink-0 md:hidden'>
+                    <div
+                      aria-hidden
+                      className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
+                    />
+                    <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-3 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
+                      <Icons.info
+                        className='size-12 text-indigo-600 dark:text-indigo-400'
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <p className='text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed'>
+                  Lumen Health is a thought experiment by{' '}
+                  <a
+                    href='https://www.linkedin.com/in/nirooa/'
+                    target='_blank'
+                    rel='noreferrer'
+                    className='text-foreground font-medium underline-offset-4 hover:underline'
+                  >
+                    Niroo Arjuna
+                  </a>{' '}
+                  on what could sit between a clinical scribe (like Heidi Scribe) and patient
+                  messaging (like Heidi Comms). Most patients forget the majority of what was said
+                  within minutes of leaving the consultation. Lumen Health is the consumer surface
+                  that translates the visit back to them in language they can act on.
+                </p>
+                <div className='mt-5 flex flex-wrap gap-3'>
+                  <Button
+                    asChild
+                    className='bg-indigo-600 shadow-sm shadow-indigo-600/20 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400'
+                  >
+                    <a
+                      href='https://github.com/kneeroo/Lumen-Health'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <Icons.github className='mr-2 size-4' />
+                      View on GitHub
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant='outline'
+                    className='border-indigo-200 bg-white/70 backdrop-blur-sm hover:bg-white dark:bg-card/60'
+                  >
+                    <a href='https://www.linkedin.com/in/nirooa/' target='_blank' rel='noreferrer'>
+                      Connect with Niroo
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Demo disclaimer */}
         <section>
           <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3.5 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
@@ -200,42 +298,6 @@ export default function HomePage() {
               );
             })}
           </div>
-        </section>
-
-        {/* About */}
-        <section>
-          <Card>
-            <CardContent className='space-y-2 py-4'>
-              <div className='flex items-center gap-2'>
-                <Icons.info className='text-muted-foreground size-4' />
-                <span className='text-sm font-semibold'>About this project</span>
-              </div>
-              <p className='text-muted-foreground text-sm leading-relaxed'>
-                Lumen Health is a thought experiment by{' '}
-                <a
-                  href='https://www.linkedin.com/in/nirooa/'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='hover:text-foreground underline-offset-4 hover:underline'
-                >
-                  Niroo Arjuna
-                </a>{' '}
-                on what could sit between a clinical scribe (like Heidi Scribe) and patient
-                messaging (like Heidi Comms). Most patients forget the majority of what was said
-                within minutes of leaving the consultation. Lumen Health is the consumer surface
-                that translates the visit back to them in language they can act on.
-              </p>
-              <a
-                href='https://github.com/kneeroo/Lumen-Health'
-                target='_blank'
-                rel='noreferrer'
-                className='text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 hover:underline'
-              >
-                <Icons.github className='size-3.5' />
-                kneeroo/Lumen-Health
-              </a>
-            </CardContent>
-          </Card>
         </section>
       </div>
     </PageContainer>
