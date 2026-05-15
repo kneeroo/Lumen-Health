@@ -24,8 +24,10 @@ export default function AppSidebar() {
   return (
     <Sidebar
       collapsible='icon'
-      // Wider collapsed mode so icon buttons aren't flush against the rail.
-      style={{ ['--sidebar-width-icon' as string]: '4rem' }}
+      // Wider collapsed mode (5rem) so the 40x40 active icon has 20px of
+      // breathing room on each side, not just 12px. Stops the dark active
+      // button from appearing to clip into the page content.
+      style={{ ['--sidebar-width-icon' as string]: '5rem' }}
     >
       {/* Header height matches the page Header (h-16 / md:h-14) so the brand
           mark aligns vertically with the breadcrumb across the divider. */}
@@ -77,7 +79,12 @@ export default function AppSidebar() {
           </SidebarGroup>
         ))}
       </SidebarContent>
-      <SidebarFooter>
+      {/* Asymmetric vertical padding (less on top, more on bottom) so the
+          avatar's vertical center aligns more closely with the site footer
+          text baseline. Symmetric padding made the avatar visually sit
+          slightly lower than the text because the avatar is taller than
+          the text line height. */}
+      <SidebarFooter className='!pt-1 !pb-3'>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
