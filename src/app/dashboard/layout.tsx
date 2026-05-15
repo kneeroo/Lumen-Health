@@ -24,7 +24,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <KBar>
-      <SidebarProvider defaultOpen={defaultOpen}>
+      {/* --sidebar-width-icon overrides shadcn's default 3rem so the collapsed
+          sidebar is 5rem wide and the gap div that pushes SidebarInset right
+          accounts for the wider rail. */}
+      <SidebarProvider
+        defaultOpen={defaultOpen}
+        style={{ ['--sidebar-width-icon' as string]: '5rem' } as React.CSSProperties}
+      >
         <AppSidebar />
         <SidebarInset>
           <Header />

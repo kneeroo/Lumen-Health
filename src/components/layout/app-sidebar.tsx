@@ -32,13 +32,7 @@ export default function AppSidebar() {
   }, [router]);
 
   return (
-    <Sidebar
-      collapsible='icon'
-      // Wider collapsed mode (5rem) so the 40x40 active icon has 20px of
-      // breathing room on each side, not just 12px. Stops the dark active
-      // button from appearing to clip into the page content.
-      style={{ ['--sidebar-width-icon' as string]: '5rem' }}
-    >
+    <Sidebar collapsible='icon'>
       {/* Header height matches the page Header (h-16 / md:h-14) so the brand
           mark aligns vertically with the breadcrumb across the divider.
           The whole brand mark links to /dashboard/home — the welcome page
