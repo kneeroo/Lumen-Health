@@ -9,8 +9,8 @@ export function VisitCard({ visit, isLatest }: { visit: Visit; isLatest?: boolea
     <Card className='gap-0 py-4'>
       <CardContent className='flex flex-wrap items-center justify-between gap-4 px-4'>
         <div className='min-w-0 flex-1'>
-          <div className='flex flex-wrap items-center gap-2'>
-            <CardTitle className='text-base'>{visit.primaryTopic}</CardTitle>
+          <div className='flex items-center gap-2'>
+            <CardTitle className='truncate text-base'>{visit.primaryTopic}</CardTitle>
             {isLatest && (
               <Badge
                 variant='secondary'
