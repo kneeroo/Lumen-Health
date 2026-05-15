@@ -105,8 +105,11 @@ export default function HomePage() {
               <div className='font-semibold'>This is a demo, not a real medical record.</div>
               <p className='mt-1 leading-relaxed'>
                 Patient data and clinicians shown here are fictional. Do not use Lumen Health for
-                actual clinical care. For emergencies, call 000 (or your local emergency number).
-                For urgent concerns, call your clinic directly.
+                actual clinical care.
+              </p>
+              <p className='mt-2 leading-relaxed'>
+                For emergencies, call 000 (or your local emergency number). For urgent concerns,
+                call your clinic directly.
               </p>
             </div>
           </div>

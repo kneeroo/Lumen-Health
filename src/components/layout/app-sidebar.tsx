@@ -78,7 +78,15 @@ export default function AppSidebar() {
       <SidebarContent className='overflow-x-hidden'>
         {navGroups.map((group) => (
           <SidebarGroup key={group.label || 'ungrouped'} className='py-0'>
-            {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
+            {group.label && (
+              // pointer-events-none in collapsed mode: shadcn hides the label
+              // with -mt-8 + opacity-0 so it overlaps the nav button above it
+              // and intercepts clicks (especially the bottom-right of the last
+              // item in the previous group). Disabling pointer events fixes that.
+              <SidebarGroupLabel className='group-data-[collapsible=icon]:pointer-events-none'>
+                {group.label}
+              </SidebarGroupLabel>
+            )}
             <SidebarMenu>
               {group.items.map((item) => {
                 const Icon = item.icon ? Icons[item.icon] : Icons.logo;
