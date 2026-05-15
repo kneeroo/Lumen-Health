@@ -3,7 +3,10 @@ import { Icons } from '@/components/icons';
 export function SiteFooter() {
   return (
     <footer className='border-border/60 mt-auto border-t'>
-      <div className='flex w-full flex-col items-center gap-3 px-4 py-5 text-center text-xs sm:flex-row sm:items-center sm:justify-between sm:text-left md:px-6'>
+      {/* min-h-16 matches the sidebar footer (SidebarMenuButton size=lg + p-2
+          wrapper = 48 + 16 = 64px) so the DP avatar's vertical center aligns
+          with the footer text on the same horizontal line. */}
+      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-between sm:py-0 sm:text-left md:px-6'>
         <div className='text-muted-foreground'>
           <span className='font-medium'>Lumen Health</span>, a thought experiment by{' '}
           <a
