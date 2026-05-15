@@ -9,7 +9,7 @@ import { NotificationCenter } from '@/features/notifications/components/notifica
 export default function Header() {
   return (
     <header className='bg-background/60 sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between gap-2 backdrop-blur-md md:h-14'>
-      <div className='flex items-center gap-2 px-4'>
+      <div className='flex items-center gap-3 px-4 md:pl-8'>
         <SidebarTrigger className='-ml-1' />
         <Separator orientation='vertical' className='mr-2 h-4' />
         <Breadcrumbs />

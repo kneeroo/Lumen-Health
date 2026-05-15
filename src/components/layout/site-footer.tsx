@@ -4,9 +4,10 @@ export function SiteFooter() {
   return (
     <footer className='border-border/60 mt-auto border-t'>
       {/* min-h-16 matches the sidebar footer (SidebarMenuButton size=lg + p-2
-          wrapper = 48 + 16 = 64px) so the DP avatar's vertical center aligns
-          with the footer text on the same horizontal line. */}
-      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-between sm:py-0 sm:text-left md:px-6'>
+          wrapper = 48 + 16 = 64px). justify-evenly distributes equal space
+          before, between, and after the children so the github cluster sits
+          at a balanced midpoint, not jammed against the right edge. */}
+      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-evenly sm:gap-0 sm:py-0 sm:text-left md:px-6'>
         <div className='text-muted-foreground'>
           <span className='font-medium'>Lumen Health</span>, a thought experiment by{' '}
           <a
