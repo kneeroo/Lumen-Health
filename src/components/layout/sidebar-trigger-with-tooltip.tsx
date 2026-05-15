@@ -5,7 +5,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 
 /**
  * The shadcn SidebarTrigger button wrapped in a tooltip whose label
- * reflects the current sidebar state (Expand vs Collapse).
+ * reflects the current sidebar state (Expand vs Collapse). Sized up so
+ * the icon matches the sidebar's nav icons (size-5).
  */
 export function SidebarTriggerWithTooltip() {
   const { state } = useSidebar();
@@ -14,7 +15,7 @@ export function SidebarTriggerWithTooltip() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <SidebarTrigger />
+        <SidebarTrigger className='size-9 [&_svg]:!size-5' />
       </TooltipTrigger>
       <TooltipContent side='bottom' align='start'>
         {label}
