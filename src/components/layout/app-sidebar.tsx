@@ -70,11 +70,11 @@ export default function AppSidebar() {
               <div
                 className={
                   pathname === '/home'
-                    ? 'bg-primary flex size-9 shrink-0 items-center justify-center rounded-md text-emerald-400 dark:text-emerald-100'
-                    : `border-2 border-emerald-700 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md`
+                    ? 'bg-primary flex size-11 shrink-0 items-center justify-center rounded-lg text-emerald-400 dark:text-emerald-100'
+                    : `border-2 border-emerald-700 bg-emerald-500/10 ${iconTextClass.green} flex size-11 shrink-0 items-center justify-center rounded-lg`
                 }
               >
-                <Icons.heartbeat className='size-5' />
+                <Icons.heartbeat className='size-7' strokeWidth={2.25} />
               </div>
               <div className='flex min-w-0 flex-col leading-none group-data-[collapsible=icon]:hidden'>
                 <span className='text-foreground text-sm font-semibold'>Lumen Health</span>
