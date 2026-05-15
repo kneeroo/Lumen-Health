@@ -9,7 +9,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail
+  SidebarRail,
+  useSidebar
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -22,6 +23,7 @@ import { Icons } from '../icons';
 export default function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { state, isMobile } = useSidebar();
 
   // Eagerly prefetch every nav route on mount so the first click on any nav
   // item is instant. Mirrors what Next.js Link does automatically, but we
@@ -65,7 +67,7 @@ export default function AppSidebar() {
               </div>
             </Link>
           </TooltipTrigger>
-          <TooltipContent side='right' align='center'>
+          <TooltipContent side='right' align='center' hidden={state !== 'collapsed' || isMobile}>
             Home
           </TooltipContent>
         </Tooltip>
