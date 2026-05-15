@@ -165,18 +165,15 @@ export default function HomePage() {
               of leaving the consultation. Lumen Health is the consumer surface that translates the
               visit back to them in language they can act on.
             </p>
-            <p className='text-muted-foreground text-sm leading-relaxed'>
-              Source on GitHub:{' '}
-              <a
-                href='https://github.com/kneeroo/Lumen-Health'
-                target='_blank'
-                rel='noreferrer'
-                className='hover:text-foreground underline-offset-4 hover:underline'
-              >
-                kneeroo/Lumen-Health
-              </a>
-              .
-            </p>
+            <a
+              href='https://github.com/kneeroo/Lumen-Health'
+              target='_blank'
+              rel='noreferrer'
+              className='text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm underline-offset-4 hover:underline'
+            >
+              <Icons.github className='size-3.5' />
+              kneeroo/Lumen-Health
+            </a>
           </CardContent>
         </Card>
       </section>
