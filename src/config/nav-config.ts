@@ -11,7 +11,7 @@ export const navGroups: NavGroup[] = [
       {
         title: 'My Visits',
         url: '/dashboard/overview',
-        icon: 'dashboard',
+        icon: 'visit',
         isActive: false,
         shortcut: ['m', 'v'],
         items: []
@@ -19,7 +19,7 @@ export const navGroups: NavGroup[] = [
       {
         title: 'Patient Portal',
         url: '/dashboard/patient-portal',
-        icon: 'product',
+        icon: 'patientPortal',
         isActive: false,
         shortcut: ['p', 'p'],
         items: []
@@ -37,14 +37,6 @@ export const navGroups: NavGroup[] = [
   {
     label: 'Account',
     items: [
-      {
-        title: 'Profile',
-        url: '/dashboard/profile',
-        icon: 'profile',
-        isActive: false,
-        shortcut: ['p', 'r'],
-        items: []
-      },
       {
         title: 'Notifications',
         url: '/dashboard/notifications',

@@ -23,14 +23,14 @@ type NotificationState = {
 const mockNotifications: Notification[] = [
   {
     id: '1',
-    title: 'New team member joined',
-    body: 'Sarah Connor has joined the Engineering workspace.',
+    title: 'Lab results ready',
+    body: 'Your A1C blood test results from 12 May are now available in your patient portal.',
     status: 'unread',
-    createdAt: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
+    createdAt: new Date(Date.now() - 1000 * 60 * 12).toISOString(),
     actions: [
       {
-        id: 'view',
-        label: 'View workspace',
+        id: 'open-portal',
+        label: 'View results',
         type: 'redirect',
         style: 'primary'
       }
@@ -38,14 +38,14 @@ const mockNotifications: Notification[] = [
   },
   {
     id: '2',
-    title: 'New product added',
-    body: 'A new product "Dashboard Pro" has been added to the catalog.',
+    title: 'Message from Dr. Maya Chen',
+    body: 'Just checking in on how the walking is going since our last visit. Any side effects from the metformin so far?',
     status: 'unread',
-    createdAt: new Date(Date.now() - 1000 * 60 * 30).toISOString(),
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 4).toISOString(),
     actions: [
       {
-        id: 'view-product',
-        label: 'View products',
+        id: 'open-messages',
+        label: 'Open messages',
         type: 'redirect',
         style: 'primary'
       }
@@ -53,14 +53,14 @@ const mockNotifications: Notification[] = [
   },
   {
     id: '3',
-    title: 'Billing cycle updated',
-    body: 'Your Pro plan has been renewed. Next invoice on April 24, 2026.',
+    title: 'Prescription refill ready',
+    body: 'Your metformin (500 mg) refill is ready for collection at Lumen Pharmacy, High Street branch.',
     status: 'unread',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
     actions: [
       {
-        id: 'billing',
-        label: 'View billing',
+        id: 'open-portal',
+        label: 'View medications',
         type: 'redirect',
         style: 'primary'
       }
@@ -68,14 +68,14 @@ const mockNotifications: Notification[] = [
   },
   {
     id: '4',
-    title: 'Task assigned to you',
-    body: 'You have been assigned "Update dashboard analytics" on the Kanban board.',
+    title: 'Appointment reminder',
+    body: 'Cardiology follow-up with Dr. James Okafor on 14 October at 10:30 AM. Reception will confirm closer to the date.',
     status: 'read',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toISOString(),
     actions: [
       {
-        id: 'open',
-        label: 'Open kanban',
+        id: 'open-portal',
+        label: 'View visit',
         type: 'redirect',
         style: 'primary'
       }
@@ -83,14 +83,14 @@ const mockNotifications: Notification[] = [
   },
   {
     id: '5',
-    title: 'New message from Alex',
-    body: 'Alex sent you a message: "Hey, can we sync on the overview dashboard?"',
+    title: 'Action item due soon',
+    body: 'Reminder: book a repeat A1C blood test for the week of 12 August (within 12 weeks of your last visit).',
     status: 'read',
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 4).toISOString(),
     actions: [
       {
-        id: 'open-chat',
-        label: 'Open chat',
+        id: 'open-portal',
+        label: 'View action items',
         type: 'redirect',
         style: 'primary'
       }

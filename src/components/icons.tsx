@@ -87,6 +87,12 @@ import {
   IconUsers,
   IconVideo,
   IconCrown,
+  IconHeartbeat,
+  IconStethoscope,
+  IconPill,
+  IconReportMedical,
+  IconCalendarHeart,
+  IconActivity,
   IconX
 } from '@tabler/icons-react';
 
@@ -211,6 +217,16 @@ export const Icons = {
   toastWarning: IconAlertTriangle,
   toastError: IconCircleX,
   toastLoading: IconLoader2,
+
+  // Healthcare
+  heartbeat: IconHeartbeat,
+  stethoscope: IconStethoscope,
+  pill: IconPill,
+  reportMedical: IconReportMedical,
+  calendarHeart: IconCalendarHeart,
+  activity: IconActivity,
+  visit: IconCalendarHeart,
+  patientPortal: IconReportMedical,
 
   // Misc
   pizza: IconPizza,

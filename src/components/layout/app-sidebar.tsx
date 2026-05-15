@@ -29,7 +29,7 @@ export default function AppSidebar() {
           className='flex items-center gap-2 px-2 py-1.5 group-data-[collapsible=icon]:justify-center'
         >
           <div className='bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-md'>
-            <Icons.add className='size-5' />
+            <Icons.heartbeat className='size-5' />
           </div>
           <div className='flex flex-col leading-none group-data-[collapsible=icon]:hidden'>
             <span className='text-sm font-semibold'>Lumen Health</span>
