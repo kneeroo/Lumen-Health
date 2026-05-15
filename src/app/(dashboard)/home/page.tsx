@@ -181,7 +181,19 @@ export default function HomePage() {
               </div>
 
               <div>
-                <div className='flex items-start justify-between gap-4'>
+                <div className='flex items-center gap-4'>
+                  <div className='relative shrink-0 md:hidden'>
+                    <div
+                      aria-hidden
+                      className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
+                    />
+                    <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-3 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
+                      <Icons.info
+                        className='size-12 text-indigo-600 dark:text-indigo-400'
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </div>
                   <div className='min-w-0'>
                     <p className='text-xs font-semibold tracking-widest text-indigo-700 uppercase dark:text-indigo-300'>
                       About this project
@@ -192,18 +204,6 @@ export default function HomePage() {
                         post-visit care.
                       </span>
                     </h2>
-                  </div>
-                  <div className='relative shrink-0 md:hidden'>
-                    <div
-                      aria-hidden
-                      className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
-                    />
-                    <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-3 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
-                      <Icons.info
-                        className='size-10 text-indigo-600 dark:text-indigo-400'
-                        strokeWidth={1.5}
-                      />
-                    </div>
                   </div>
                 </div>
                 <p className='text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed md:text-base'>
