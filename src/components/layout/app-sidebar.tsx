@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { navGroups } from '@/config/nav-config';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+// Link still needed for nav menu items below.
 import * as React from 'react';
 import { Icons } from '../icons';
 
@@ -24,10 +25,7 @@ export default function AppSidebar() {
   return (
     <Sidebar collapsible='icon'>
       <SidebarHeader className='group-data-[collapsible=icon]:pt-4'>
-        <Link
-          href='/dashboard/overview'
-          className='flex items-center gap-2 px-2 py-1.5 group-data-[collapsible=icon]:justify-center'
-        >
+        <div className='flex items-center gap-2 px-2 py-1.5 group-data-[collapsible=icon]:justify-center'>
           <div className='bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-md'>
             <Icons.heartbeat className='size-5' />
           </div>
@@ -35,7 +33,7 @@ export default function AppSidebar() {
             <span className='text-sm font-semibold'>Lumen Health</span>
             <span className='text-muted-foreground text-xs'>Your visit, in your words</span>
           </div>
-        </Link>
+        </div>
       </SidebarHeader>
       <SidebarContent className='overflow-x-hidden'>
         {navGroups.map((group) => (

@@ -108,19 +108,16 @@ export default function MedicationsPage() {
           <div className='space-y-2'>
             {past.map((m, i) => (
               <Card key={`past-${m.visitId}-${m.name}-${i}`}>
-                <CardContent className='flex items-baseline justify-between pt-6'>
-                  <div className='space-y-1'>
+                <CardContent className='flex items-center justify-between gap-4 px-4 py-3'>
+                  <div className='min-w-0 flex-1 space-y-0.5'>
                     <div className='text-sm font-medium'>
                       {m.name} <span className='text-muted-foreground font-normal'>· {m.dose}</span>
                     </div>
-                    <div className='text-muted-foreground text-xs'>
-                      {m.purpose} · {m.duration}
-                    </div>
-                    <div className='text-muted-foreground text-xs'>
-                      Prescribed by {m.clinician} at {m.visitDate}
+                    <div className='text-muted-foreground truncate text-xs'>
+                      {m.purpose} · {m.duration} · {m.clinician}, {m.visitDate}
                     </div>
                   </div>
-                  <Badge variant='outline' className='text-xs'>
+                  <Badge variant='outline' className='shrink-0 text-xs'>
                     Completed
                   </Badge>
                 </CardContent>

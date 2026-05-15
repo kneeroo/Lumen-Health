@@ -41,9 +41,9 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
   }
 
   return (
-    <Card className='flex h-[calc(100vh-12rem)] min-h-[500px] overflow-hidden p-0'>
+    <Card className='grid h-[640px] grid-cols-[280px_1fr] overflow-hidden p-0'>
       {/* Thread list */}
-      <aside className='border-border/60 w-72 shrink-0 overflow-y-auto border-r'>
+      <aside className='border-border/60 overflow-y-auto border-r'>
         <ul>
           {threads.map((t) => {
             const isActive = t.id === activeId;
@@ -83,7 +83,7 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
       </aside>
 
       {/* Conversation pane */}
-      <section className='flex flex-1 flex-col'>
+      <section className='flex min-h-0 flex-col'>
         {active ? (
           <>
             <header className='border-border/60 flex items-center gap-3 border-b px-4 py-3'>
@@ -100,7 +100,7 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
               </div>
             </header>
 
-            <div className='flex-1 space-y-3 overflow-y-auto px-4 py-4'>
+            <div className='min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4'>
               {active.messages.map((m) => (
                 <MessageBubble
                   key={m.id}
