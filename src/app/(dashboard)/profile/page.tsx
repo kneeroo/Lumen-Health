@@ -39,10 +39,11 @@ export default function ProfilePage() {
       pageTitle='Profile'
       pageDescription='Your basic details and care team. Lumen Health uses these to address you correctly and route messages to the right clinician.'
     >
-      <div className='grid gap-4 lg:grid-cols-[280px_1fr]'>
-        {/* Identity card */}
-        <Card>
-          <CardContent className='flex flex-col items-center gap-3 pt-6 text-center'>
+      <div className='grid items-start gap-4 lg:grid-cols-[280px_1fr]'>
+        {/* Identity card — items-start on the grid + self-start here keeps it
+            from stretching to match the height of the detail column. */}
+        <Card className='self-start'>
+          <CardContent className='flex flex-col items-center gap-3 text-center'>
             <Avatar className='size-20 rounded-2xl'>
               <AvatarFallback className='bg-primary/10 text-primary rounded-2xl text-2xl font-semibold'>
                 DP

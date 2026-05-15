@@ -18,7 +18,7 @@ export function Heading({ title, description, infoContent }: HeadingProps) {
           </div>
         )}
       </div>
-      <p className='text-muted-foreground text-sm'>{description}</p>
+      <p className='text-muted-foreground mt-2 text-sm'>{description}</p>
     </div>
   );
 }
