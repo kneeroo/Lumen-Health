@@ -119,12 +119,14 @@ function IconLumenLogo({ size = 24, stroke = 2, ...props }: IconProps & { stroke
       strokeLinejoin='round'
       {...props}
     >
-      {/* Light bulb body */}
+      {/* Light bulb body — dome + three screw-thread lines */}
       <path d='M8.5 18a7 7 0 1 1 7 0' />
       <path d='M9 18h6' />
+      <path d='M9.5 19.5h5' />
       <path d='M10 21h4' />
-      {/* Tabler IconHeartbeat (heart + EKG line) scaled into the dome */}
-      <g transform='translate(7 5) scale(0.42)' vectorEffect='non-scaling-stroke'>
+      {/* Tabler IconHeartbeat (heart + EKG line) shifted down so it sits
+          centred in the bulb dome (was rendering near the top). */}
+      <g transform='translate(7 6.5) scale(0.42)' vectorEffect='non-scaling-stroke'>
         <path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' />
         <path d='M3 13h2l2 -2l4 4l2 -2l3 3h5' />
       </g>
