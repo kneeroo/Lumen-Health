@@ -22,6 +22,14 @@ export default function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  // Eagerly prefetch every nav route on mount so the first click on any nav
+  // item is instant. Mirrors what Next.js Link does automatically, but we
+  // are not using Link here because the asChild + Slot + Link forwarding
+  // chain was shrinking the click area on some items (Messages especially).
+  React.useEffect(() => {
+    navGroups.forEach((g) => g.items.forEach((item) => router.prefetch(item.url)));
+  }, [router]);
+
   return (
     <Sidebar
       collapsible='icon'
@@ -67,20 +75,20 @@ export default function AppSidebar() {
                     pathname.startsWith('/dashboard/patient-portal'));
                 return (
                   <SidebarMenuItem key={item.title}>
-                    {/* asChild + Link: Link prefetches the route as soon as it
-                        mounts, so clicking feels instant. onMouseEnter also
-                        triggers an eager prefetch as a fallback in case the
-                        viewport prefetch hasn't happened yet. */}
+                    {/* Plain button with onClick + router.push so the full
+                        button area is the click target (no Slot/Link forwarding
+                        that was shrinking the Messages hit area).
+                        Prefetching is handled by the useEffect above plus the
+                        onMouseEnter, so navigation still feels instant. */}
                     <SidebarMenuButton
-                      asChild
                       tooltip={item.title}
                       isActive={isActive}
+                      onClick={() => router.push(item.url)}
+                      onMouseEnter={() => router.prefetch(item.url)}
                       className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
-                      <Link href={item.url} prefetch onMouseEnter={() => router.prefetch(item.url)}>
-                        <Icon />
-                        <span className='text-sm'>{item.title}</span>
-                      </Link>
+                      <Icon />
+                      <span className='text-sm'>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );

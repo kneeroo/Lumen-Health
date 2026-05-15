@@ -9,7 +9,8 @@ import { NotificationCenter } from '@/features/notifications/components/notifica
 export default function Header() {
   return (
     <header className='bg-background/60 sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between backdrop-blur-md md:h-14'>
-      <div className='flex items-center gap-3 px-4 md:px-6'>
+      {/* Tight left padding so the trigger sits just beyond the sidebar edge. */}
+      <div className='flex items-center gap-3 pr-4 pl-2 md:pl-3'>
         <SidebarTrigger />
         <Separator orientation='vertical' className='mr-2 h-4' />
         <Breadcrumbs />
