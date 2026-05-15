@@ -74,10 +74,10 @@ export default function HomePage() {
 
   return (
     <PageContainer>
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col gap-4'>
         {/* Hero banner */}
         <section>
-          <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-8 py-9 md:px-12 md:py-12 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
+          <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-8 py-6 md:px-10 md:py-7 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
             <div
               aria-hidden
               className='pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl'
@@ -90,7 +90,7 @@ export default function HomePage() {
             <div className='relative md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-8'>
               <div>
                 <div className='flex items-start justify-between gap-4'>
-                  <h1 className='text-4xl font-bold tracking-tight md:text-5xl'>
+                  <h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
                     Your visit,{' '}
                     <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
                       in your words.
@@ -111,13 +111,13 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                <p className='text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed'>
+                <p className='text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed md:text-base'>
                   Lumen Health is a patient-facing post-visit companion. It translates the clinical
                   note your doctor wrote into plain language, with action items you can check off,
                   medication instructions you can actually follow, and a glossary for every term you
                   did not catch.
                 </p>
-                <div className='mt-5 flex flex-wrap gap-3'>
+                <div className='mt-4 flex flex-wrap gap-3'>
                   <Button asChild className='shadow-sm shadow-emerald-600/20'>
                     <Link href={`/patient-portal?visit=${latestVisit.id}`}>
                       Open your most recent visit
@@ -140,9 +140,9 @@ export default function HomePage() {
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-7 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-5 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
                     <Icons.heartbeat
-                      className='size-24 text-emerald-600 dark:text-emerald-400'
+                      className='size-16 text-emerald-600 dark:text-emerald-400'
                       strokeWidth={1.5}
                     />
                   </div>
@@ -154,7 +154,7 @@ export default function HomePage() {
 
         {/* About this project — prominent banner */}
         <section>
-          <div className='relative overflow-hidden rounded-2xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50 via-card to-indigo-50/40 px-8 py-9 md:px-12 md:py-12 dark:border-indigo-900/40 dark:from-indigo-950/40 dark:via-card dark:to-indigo-950/20'>
+          <div className='relative overflow-hidden rounded-2xl border border-indigo-200/60 bg-gradient-to-br from-indigo-50 via-card to-indigo-50/40 px-8 py-6 md:px-10 md:py-7 dark:border-indigo-900/40 dark:from-indigo-950/40 dark:via-card dark:to-indigo-950/20'>
             <div
               aria-hidden
               className='pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl'
@@ -171,9 +171,9 @@ export default function HomePage() {
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-7 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-5 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
                     <Icons.info
-                      className='size-24 text-indigo-600 dark:text-indigo-400'
+                      className='size-16 text-indigo-600 dark:text-indigo-400'
                       strokeWidth={1.5}
                     />
                   </div>
@@ -186,7 +186,7 @@ export default function HomePage() {
                     <p className='text-xs font-semibold tracking-widest text-indigo-700 uppercase dark:text-indigo-300'>
                       About this project
                     </p>
-                    <h2 className='mt-2 text-3xl font-bold tracking-tight md:text-4xl'>
+                    <h2 className='mt-1.5 text-2xl font-bold tracking-tight md:text-3xl'>
                       A thought experiment in{' '}
                       <span className='bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-200'>
                         post-visit care.
@@ -206,7 +206,7 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                <p className='text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed'>
+                <p className='text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed md:text-base'>
                   Lumen Health is a thought experiment by{' '}
                   <a
                     href='https://www.linkedin.com/in/nirooa/'
@@ -221,7 +221,7 @@ export default function HomePage() {
                   within minutes of leaving the consultation. Lumen Health is the consumer surface
                   that translates the visit back to them in language they can act on.
                 </p>
-                <div className='mt-5 flex flex-wrap gap-3'>
+                <div className='mt-4 flex flex-wrap gap-3'>
                   <Button
                     asChild
                     className='bg-indigo-600 shadow-sm shadow-indigo-600/20 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400'
@@ -276,23 +276,23 @@ export default function HomePage() {
           <p className='text-muted-foreground mt-0.5 text-sm'>
             Seven places to explore. Click a card to jump in.
           </p>
-          <div className='mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
+          <div className='mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3'>
             {features.map((f) => {
               const Icon = Icons[f.icon];
               const color = navIconColor[f.href];
               const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
               return (
                 <Link key={f.href} href={f.href} className='group block'>
-                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 flex h-full flex-col gap-3 px-5 py-5 transition-colors'>
-                    <div className='flex items-center gap-3'>
+                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 flex h-full flex-col gap-2 px-4 py-3.5 transition-colors'>
+                    <div className='flex items-center gap-2.5'>
                       <div
-                        className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${boxClass}`}
+                        className={`flex size-9 shrink-0 items-center justify-center rounded-lg ${boxClass}`}
                       >
-                        <Icon className='size-6' />
+                        <Icon className='size-5' />
                       </div>
-                      <CardTitle className='text-base'>{f.title}</CardTitle>
+                      <CardTitle className='text-sm'>{f.title}</CardTitle>
                     </div>
-                    <p className='text-muted-foreground text-sm leading-snug'>{f.description}</p>
+                    <p className='text-muted-foreground text-xs leading-snug'>{f.description}</p>
                   </Card>
                 </Link>
               );
