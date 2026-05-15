@@ -4,6 +4,14 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
 import { Icons } from '@/components/icons';
 import { PENDING_QUESTION_KEY, type PendingQuestion } from '@/components/lumen/ask-question-button';
@@ -27,9 +35,6 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
   const [draft, setDraft] = useState('');
   const composerRef = useRef<HTMLTextAreaElement | null>(null);
 
-  // If the user clicked "Ask a question" on a visit, we created a draft
-  // thread context in sessionStorage. Pick it up here, create a new thread
-  // (or reuse one already started for this visit), and pre-fill the composer.
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const raw = window.sessionStorage.getItem(PENDING_QUESTION_KEY);
@@ -58,15 +63,32 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
     setDraft(
       `Hi ${ctx.clinician.split(' ').slice(0, 2).join(' ')}, I had a question about my ${ctx.visitTopic.toLowerCase()} visit on ${ctx.visitDate}: `
     );
-    // Focus the composer next tick so the user can keep typing.
     setTimeout(() => composerRef.current?.focus(), 50);
   }, []);
 
   const active = useMemo(() => threads.find((t) => t.id === activeId), [threads, activeId]);
+  const unreadCount = threads.filter((t) => t.unread && t.id !== activeId).length;
 
   function selectThread(id: string) {
     setActiveId(id);
     setThreads((prev) => prev.map((t) => (t.id === id ? { ...t, unread: false } : t)));
+  }
+
+  function startNewConversation() {
+    const newThreadId = `t-new-${Date.now()}`;
+    const newThread: Thread = {
+      id: newThreadId,
+      from: 'Care team',
+      role: 'Clinic',
+      initials: 'CT',
+      topic: 'New message',
+      lastDate: 'Just now',
+      messages: []
+    };
+    setThreads((prev) => [newThread, ...prev]);
+    setActiveId(newThreadId);
+    setDraft('');
+    setTimeout(() => composerRef.current?.focus(), 50);
   }
 
   function sendReply() {
@@ -89,22 +111,54 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
   }
 
   return (
-    <Card className='grid h-[calc(100svh-13rem)] max-h-[640px] min-h-[360px] grid-cols-[140px_1fr] overflow-hidden p-0 sm:grid-cols-[280px_1fr]'>
-      {/* Thread list */}
-      <aside className='border-border/60 overflow-y-auto border-r'>
-        <ul>
-          {threads.map((t) => {
-            const isActive = t.id === activeId;
-            return (
-              <li key={t.id}>
-                <button
-                  type='button'
-                  onClick={() => selectThread(t.id)}
-                  className={`hover:bg-muted/50 flex w-full items-start gap-3 border-b border-border/60 p-3 text-left transition-colors ${
-                    isActive ? 'bg-muted/60' : ''
-                  }`}
+    <Card className='flex h-[calc(100svh-13rem)] max-h-[640px] min-h-[360px] flex-col overflow-hidden p-0'>
+      {/* Thread switcher header */}
+      <header className='border-border/60 flex items-center gap-3 border-b px-4 py-3'>
+        {active ? (
+          <>
+            <Avatar className='size-9 shrink-0'>
+              <AvatarFallback className='bg-primary/10 text-primary text-xs font-medium'>
+                {active.initials}
+              </AvatarFallback>
+            </Avatar>
+            <div className='min-w-0 flex-1'>
+              <div className='truncate text-sm font-medium'>{active.from}</div>
+              <div className='text-muted-foreground truncate text-xs'>
+                {active.role} · {active.topic}
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className='text-muted-foreground flex-1 text-sm'>No conversation selected</div>
+        )}
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant='outline' size='sm' className='shrink-0 gap-1.5'>
+              <Icons.chat className='size-3.5' />
+              <span className='hidden sm:inline'>Switch</span>
+              {unreadCount > 0 && (
+                <Badge variant='secondary' className='ml-0.5 h-4 px-1.5 text-[10px]'>
+                  {unreadCount}
+                </Badge>
+              )}
+              <Icons.chevronDown className='size-3.5' />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align='end' className='w-80'>
+            <DropdownMenuLabel className='text-muted-foreground text-xs font-normal'>
+              Your conversations
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {threads.map((t) => {
+              const isActive = t.id === activeId;
+              return (
+                <DropdownMenuItem
+                  key={t.id}
+                  onSelect={() => selectThread(t.id)}
+                  className={`flex items-start gap-3 py-2 ${isActive ? 'bg-muted/60' : ''}`}
                 >
-                  <Avatar className='size-9 shrink-0'>
+                  <Avatar className='size-8 shrink-0'>
                     <AvatarFallback className='bg-primary/10 text-primary text-xs font-medium'>
                       {t.initials}
                     </AvatarFallback>
@@ -123,40 +177,37 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
                       {t.lastDate}
                     </div>
                   </div>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </aside>
+                </DropdownMenuItem>
+              );
+            })}
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={startNewConversation} className='gap-2 py-2'>
+              <Icons.add className='size-4' />
+              <span className='text-sm font-medium'>New conversation</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </header>
 
       {/* Conversation pane */}
-      <section className='flex min-h-0 flex-col'>
+      <section className='flex min-h-0 flex-1 flex-col'>
         {active ? (
           <>
-            <header className='border-border/60 flex items-center gap-3 border-b px-4 py-3'>
-              <Avatar className='size-9'>
-                <AvatarFallback className='bg-primary/10 text-primary text-xs font-medium'>
-                  {active.initials}
-                </AvatarFallback>
-              </Avatar>
-              <div className='min-w-0 flex-1'>
-                <div className='text-sm font-medium'>{active.from}</div>
-                <div className='text-muted-foreground text-xs'>
-                  {active.role} · {active.topic}
-                </div>
-              </div>
-            </header>
-
             <div className='min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4'>
-              {active.messages.map((m) => (
-                <MessageBubble
-                  key={m.id}
-                  message={m}
-                  fromName={active.from}
-                  initials={active.initials}
-                />
-              ))}
+              {active.messages.length === 0 ? (
+                <div className='text-muted-foreground flex h-full items-center justify-center text-sm'>
+                  No messages yet. Start the conversation below.
+                </div>
+              ) : (
+                active.messages.map((m) => (
+                  <MessageBubble
+                    key={m.id}
+                    message={m}
+                    fromName={active.from}
+                    initials={active.initials}
+                  />
+                ))
+              )}
             </div>
 
             <footer className='border-border/60 space-y-2 border-t p-3'>

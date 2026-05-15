@@ -55,7 +55,7 @@ export default function AppSidebar() {
           mark aligns vertically with the breadcrumb across the divider.
           The whole brand mark links to /home — the welcome page
           with the quick guide. */}
-      <SidebarHeader className='h-16 justify-center !p-0 md:h-14'>
+      <SidebarHeader className='h-18 items-center !p-0 pt-3 md:h-16 md:pt-2'>
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
@@ -125,7 +125,7 @@ export default function AppSidebar() {
                       isActive={isActive}
                       onClick={() => navigate(router, item.url)}
                       onMouseEnter={() => router.prefetch(item.url)}
-                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
+                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary data-[active=true]:hover:text-primary-foreground dark:data-[active=true]:bg-primary/85 dark:data-[active=true]:hover:bg-primary/85 gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
                       <Icon className={iconClass} />
                       <span className='text-sm'>{item.title}</span>

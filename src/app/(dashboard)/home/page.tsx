@@ -118,15 +118,15 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className='hidden justify-center lg:flex'>
+              <div className='flex justify-center md:justify-end'>
                 <div className='relative'>
                   <div
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-7 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-5 shadow-xl shadow-emerald-600/10 backdrop-blur-md md:p-7 dark:border-emerald-800/40 dark:bg-card/60'>
                     <Icons.heartbeat
-                      className='size-24 text-emerald-600 dark:text-emerald-400'
+                      className='size-16 text-emerald-600 md:size-24 dark:text-emerald-400'
                       strokeWidth={1.5}
                     />
                   </div>
