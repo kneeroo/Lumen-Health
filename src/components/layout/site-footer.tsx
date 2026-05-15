@@ -3,15 +3,12 @@ import { Icons } from '@/components/icons';
 export function SiteFooter() {
   return (
     <footer className='border-border/60 mt-auto border-t'>
-      {/* mx-auto max-w-7xl mirrors the PageContainer pattern so the footer
-          aligns with the page content above. Three columns on desktop:
-            [attribution]   [github]   [UI credit]
-          justify-between pins the first child to the left edge, the last
-          child to the right edge, and the github sits centered between them.
-          min-h-16 matches the sidebar footer height (SidebarMenuButton
-          size=lg + p-2 wrapper = 48 + 16 = 64px) so the DP avatar aligns
-          vertically with this row. */}
-      <div className='mx-auto flex w-full max-w-7xl flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-0 sm:text-left md:px-6'>
+      {/* Centred three-item cluster on desktop:
+            [attribution]  [github]  [UI credit]
+          justify-center keeps the items grouped close together rather than
+          spread to the edges. min-h-16 matches the sidebar footer height
+          so the DP avatar aligns vertically. */}
+      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-center sm:gap-8 sm:py-0 sm:text-left md:px-6'>
         <div className='text-muted-foreground'>
           <span className='font-medium'>Lumen Health</span>, a thought experiment by{' '}
           <a
