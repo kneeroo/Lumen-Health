@@ -44,19 +44,19 @@ const TILE_STYLES: Record<Filter, { value: string; ring: string; valueColor: str
       value: 'text-emerald-600',
       ring: 'ring-emerald-500',
       valueColor: 'text-emerald-600',
-      bg: 'bg-emerald-50/40'
+      bg: 'bg-emerald-50/40 dark:bg-card'
     },
     borderline: {
       value: 'text-amber-600',
       ring: 'ring-amber-500',
       valueColor: 'text-amber-600',
-      bg: 'bg-amber-50/40'
+      bg: 'bg-amber-50/40 dark:bg-card'
     },
     abnormal: {
       value: 'text-red-600',
       ring: 'ring-red-500',
       valueColor: 'text-red-600',
-      bg: 'bg-red-50/40'
+      bg: 'bg-red-50/40 dark:bg-card'
     }
   };
 

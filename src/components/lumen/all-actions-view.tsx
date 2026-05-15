@@ -206,11 +206,25 @@ function FilterTile({
   onClick: () => void;
   accent?: 'default' | 'amber' | 'emerald' | 'blue';
 }) {
+  // In light mode the tinted bg works fine; in dark mode it muddies into
+  // a grey, so fall back to the standard card bg via dark: variants.
   const colors = {
     default: { value: 'text-foreground', ring: 'ring-foreground/40', bg: 'bg-card' },
-    amber: { value: 'text-amber-600', ring: 'ring-amber-500', bg: 'bg-amber-50/40' },
-    emerald: { value: 'text-emerald-600', ring: 'ring-emerald-500', bg: 'bg-emerald-50/40' },
-    blue: { value: 'text-blue-600', ring: 'ring-blue-500', bg: 'bg-blue-50/40' }
+    amber: {
+      value: 'text-amber-600',
+      ring: 'ring-amber-500',
+      bg: 'bg-amber-50/40 dark:bg-card'
+    },
+    emerald: {
+      value: 'text-emerald-600',
+      ring: 'ring-emerald-500',
+      bg: 'bg-emerald-50/40 dark:bg-card'
+    },
+    blue: {
+      value: 'text-blue-600',
+      ring: 'ring-blue-500',
+      bg: 'bg-blue-50/40 dark:bg-card'
+    }
   }[accent];
 
   return (

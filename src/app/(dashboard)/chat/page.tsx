@@ -10,7 +10,7 @@ export const metadata = {
 export default function MessagesPage() {
   return (
     <PageContainer pageTitle='Messages' pageDescription='Conversations with your care team.'>
-      <div className='mb-4 rounded-md border border-amber-200 bg-amber-50/60 p-4 text-sm text-amber-900'>
+      <div className='mb-4 rounded-md border border-amber-200 bg-amber-50/60 dark:bg-card dark:border-amber-900/50 dark:text-amber-300 p-4 text-sm text-amber-900'>
         <div className='flex items-start gap-3'>
           <Icons.warning className='mt-0.5 size-4 shrink-0' />
           <div className='space-y-1.5'>
