@@ -13,16 +13,20 @@ import {
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { navGroups } from '@/config/nav-config';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
-    <Sidebar collapsible='icon'>
+    <Sidebar
+      collapsible='icon'
+      // Wider collapsed mode so icon buttons aren't flush against the rail.
+      style={{ ['--sidebar-width-icon' as string]: '4rem' }}
+    >
       <SidebarHeader className='group-data-[collapsible=icon]:pt-4'>
         <div className='flex items-center gap-2.5 px-2 py-2 group-data-[collapsible=icon]:justify-center'>
           {/* Brand mark — softer treatment so it doesn't read as an active nav state. */}
@@ -52,16 +56,17 @@ export default function AppSidebar() {
                     pathname.startsWith('/dashboard/patient-portal'));
                 return (
                   <SidebarMenuItem key={item.title}>
+                    {/* Plain button + router.push (no asChild + Link) — sidesteps
+                        the Slot / Link forwarding chain that was making clicks
+                        unreliable in collapsed mode for some items. */}
                     <SidebarMenuButton
-                      asChild
                       tooltip={item.title}
                       isActive={isActive}
-                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:[&>span]:hidden group-data-[collapsible=icon]:[&_a>span]:hidden'
+                      onClick={() => router.push(item.url)}
+                      className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
-                      <Link href={item.url}>
-                        <Icon />
-                        <span className='text-sm'>{item.title}</span>
-                      </Link>
+                      <Icon />
+                      <span className='text-sm'>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
