@@ -119,16 +119,14 @@ function IconLumenLogo({ size = 24, stroke = 2, ...props }: IconProps & { stroke
       strokeLinejoin='round'
       {...props}
     >
-      {/* Light bulb body — dome + three screw-thread lines */}
-      <path d='M8.5 18a7 7 0 1 1 7 0' />
+      {/* Lucide lightbulb — dome + two screw-thread lines */}
+      <path d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5' />
       <path d='M9 18h6' />
-      <path d='M9.5 19.5h5' />
-      <path d='M10 21h4' />
-      {/* Tabler IconHeartbeat (heart + EKG line) shifted down so it sits
-          centred in the bulb dome (was rendering near the top). */}
-      <g transform='translate(7 6.5) scale(0.42)' vectorEffect='non-scaling-stroke'>
-        <path d='M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572' />
-        <path d='M3 13h2l2 -2l4 4l2 -2l3 3h5' />
+      <path d='M10 22h4' />
+      {/* Lucide heart-pulse, scaled and centred inside the bulb dome. */}
+      <g transform='translate(6 1.5) scale(0.5)' vectorEffect='non-scaling-stroke'>
+        <path d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z' />
+        <path d='M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27' />
       </g>
     </svg>
   );
