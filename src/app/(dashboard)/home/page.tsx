@@ -164,7 +164,7 @@ export default function HomePage() {
               className='pointer-events-none absolute -bottom-20 right-1/3 h-56 w-56 rounded-full bg-indigo-300/10 blur-3xl'
             />
 
-            <div className='relative md:grid md:grid-cols-[auto_1fr] md:items-start md:gap-8'>
+            <div className='relative md:grid md:grid-cols-[auto_1fr] md:items-center md:gap-8'>
               <div className='hidden md:flex'>
                 <div className='relative'>
                   <div
