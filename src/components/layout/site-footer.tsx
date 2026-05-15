@@ -3,11 +3,14 @@ import { Icons } from '@/components/icons';
 export function SiteFooter() {
   return (
     <footer className='border-border/60 mt-auto border-t'>
-      {/* min-h-16 matches the sidebar footer (SidebarMenuButton size=lg + p-2
-          wrapper = 48 + 16 = 64px). justify-evenly distributes equal space
-          before, between, and after the children so the github cluster sits
-          at a balanced midpoint, not jammed against the right edge. */}
-      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-evenly sm:gap-0 sm:py-0 sm:text-left md:px-6'>
+      {/* Three-column footer on desktop:
+            [attribution]   [github]   [UI credit]
+          justify-between pins the first child to the left edge, the last
+          child to the right edge, and the github sits centered between them.
+          min-h-16 matches the sidebar footer height (SidebarMenuButton
+          size=lg + p-2 wrapper = 48 + 16 = 64px) so the DP avatar aligns
+          vertically with this row. */}
+      <div className='flex w-full flex-col items-center gap-3 px-4 py-3 text-center text-xs sm:min-h-16 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:py-0 sm:text-left md:px-6'>
         <div className='text-muted-foreground'>
           <span className='font-medium'>Lumen Health</span>, a thought experiment by{' '}
           <a
@@ -20,30 +23,27 @@ export function SiteFooter() {
           </a>
           . Demo only. Not real PHI, not for clinical use.
         </div>
-        <div className='text-muted-foreground flex flex-wrap items-center justify-center gap-3 sm:justify-end'>
+        <a
+          href='https://github.com/kneeroo/Lumen-Health'
+          target='_blank'
+          rel='noreferrer'
+          className='text-muted-foreground hover:text-foreground inline-flex shrink-0 items-center gap-1.5 underline-offset-4 hover:underline'
+        >
+          <Icons.github className='size-3.5' />
+          kneeroo/Lumen-Health
+        </a>
+        <span className='text-muted-foreground'>
+          UI built on{' '}
           <a
-            href='https://github.com/kneeroo/Lumen-Health'
+            href='https://github.com/Kiranism/next-shadcn-dashboard-starter'
             target='_blank'
             rel='noreferrer'
-            className='hover:text-foreground inline-flex items-center gap-1.5 underline-offset-4 hover:underline'
+            className='hover:text-foreground underline-offset-4 hover:underline'
           >
-            <Icons.github className='size-3.5' />
-            kneeroo/Lumen-Health
-          </a>
-          <span aria-hidden>·</span>
-          <span>
-            UI built on{' '}
-            <a
-              href='https://github.com/Kiranism/next-shadcn-dashboard-starter'
-              target='_blank'
-              rel='noreferrer'
-              className='hover:text-foreground underline-offset-4 hover:underline'
-            >
-              Kiranism / next-shadcn-dashboard-starter
-            </a>{' '}
-            (MIT)
-          </span>
-        </div>
+            Kiranism / next-shadcn-dashboard-starter
+          </a>{' '}
+          (MIT)
+        </span>
       </div>
     </footer>
   );
