@@ -237,8 +237,8 @@ export default function HomePage() {
         {/* Demo disclaimer */}
         <section>
           <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3.5 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
-            <div className='flex items-start gap-2.5'>
-              <div className='mt-0.5 shrink-0 rounded-md border border-amber-200/70 bg-white/70 p-1 shadow-sm shadow-amber-600/10 backdrop-blur-md dark:border-amber-800/40 dark:bg-card/60'>
+            <div className='flex items-center gap-2.5'>
+              <div className='shrink-0 rounded-md border border-amber-200/70 bg-white/70 p-1 shadow-sm shadow-amber-600/10 backdrop-blur-md dark:border-amber-800/40 dark:bg-card/60'>
                 <Icons.warning className='size-3.5 text-amber-600 dark:text-amber-400' />
               </div>
               <div className='space-y-1.5'>
