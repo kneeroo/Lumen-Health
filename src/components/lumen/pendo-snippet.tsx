@@ -7,6 +7,9 @@ declare global {
   interface Window {
     pendo?: {
       initialize: (opts: Record<string, unknown>) => void;
+      pageLoad: () => void;
+      identify: (opts: Record<string, unknown>) => void;
+      validateEnvironment?: () => unknown;
     };
   }
 }
@@ -14,15 +17,18 @@ declare global {
 const PENDO_API_KEY = process.env.NEXT_PUBLIC_PENDO_API_KEY;
 
 /**
- * Pendo agent loader.
+ * Pendo agent loader for Lumen Health.
  *
- * Add NEXT_PUBLIC_PENDO_API_KEY to .env.local (and Vercel env vars) to enable.
- * Without the key, this component is a no-op so local dev still works.
+ * Without NEXT_PUBLIC_PENDO_API_KEY this component is a no-op so local
+ * dev continues to work. With the key set, it loads the Pendo agent
+ * and initializes a structured demo visitor + account so segments,
+ * Paths reports and Guides all work against a real-looking identity
+ * instead of an anonymous random ID.
  *
- * For the public demo we generate a stable per-browser visitor ID stored in
- * localStorage. account.id is hardcoded so all events roll up to one account.
+ * The demo patient identity is hardcoded because Lumen Health is a
+ * public, login-less demo — there's no auth context to read from.
  */
-function getOrCreateVisitorId(): string {
+function getOrCreateAnonId(): string {
   if (typeof window === 'undefined') return 'ssr';
   const KEY = 'lumen-pendo-visitor-id';
   let id = window.localStorage.getItem(KEY);
@@ -37,8 +43,25 @@ export function PendoSnippet() {
   useEffect(() => {
     if (!PENDO_API_KEY || !window.pendo) return;
     window.pendo.initialize({
-      visitor: { id: getOrCreateVisitorId() },
-      account: { id: 'lumen-health-demo', name: 'Lumen Health Demo' }
+      visitor: {
+        id: 'demo-patient-001',
+        email: 'demo@lumenhealth.app',
+        full_name: 'Demo Patient',
+        role: 'patient',
+        created_at: '2024-01-15',
+        anonymous_session_id: getOrCreateAnonId(),
+        state: 'VIC',
+        country: 'AU',
+        is_demo_user: true
+      },
+      account: {
+        id: 'lumen-health-demo',
+        name: 'Lumen Health Demo',
+        plan_level: 'demo',
+        region: 'ANZ',
+        industry: 'Healthcare',
+        is_demo_account: true
+      }
     });
   }, []);
 

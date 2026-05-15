@@ -125,6 +125,7 @@ export default function AppSidebar() {
                       isActive={isActive}
                       onClick={() => navigate(router, item.url)}
                       onMouseEnter={() => router.prefetch(item.url)}
+                      data-pendo-id={`nav-${item.url.replace(/^\//, '') || 'home'}`}
                       className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary data-[active=true]:hover:text-primary-foreground dark:data-[active=true]:bg-primary/85 dark:data-[active=true]:hover:bg-primary/85 gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
                       <Icon className={iconClass} />

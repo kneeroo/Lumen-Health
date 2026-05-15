@@ -25,7 +25,7 @@ export function AskQuestionButton({ context }: { context: PendingQuestion }) {
   }
 
   return (
-    <Button variant='outline' className='w-full' onClick={handleClick}>
+    <Button variant='outline' className='w-full' onClick={handleClick} data-pendo-id='ask-question'>
       <IconMessageCircle className='mr-2 size-4' />
       Ask a question
     </Button>
