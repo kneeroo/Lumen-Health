@@ -52,13 +52,6 @@ const features: Feature[] = [
       'Private conversations with your care team. Routine replies arrive within one business day.',
     href: '/chat',
     icon: 'chat'
-  },
-  {
-    title: 'Notifications',
-    description:
-      'Lab results, message replies, appointment reminders, and action item nudges, all in one place.',
-    href: '/notifications',
-    icon: 'notification'
   }
 ];
 
@@ -153,7 +146,7 @@ export default function HomePage() {
         <section>
           <h2 className='text-lg font-semibold tracking-tight'>What is in here</h2>
           <p className='text-muted-foreground mt-0.5 text-sm'>
-            Six places to explore. Click a card to jump in.
+            Five places to explore. Click a card to jump in.
           </p>
           <div className='mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
             {features.map((f) => {
