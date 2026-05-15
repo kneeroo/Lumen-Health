@@ -1,7 +1,6 @@
 'use client';
 
 import Script from 'next/script';
-import { useUser } from '@clerk/nextjs';
 import { useEffect } from 'react';
 
 declare global {
@@ -20,27 +19,28 @@ const PENDO_API_KEY = process.env.NEXT_PUBLIC_PENDO_API_KEY;
  * Add NEXT_PUBLIC_PENDO_API_KEY to .env.local (and Vercel env vars) to enable.
  * Without the key, this component is a no-op so local dev still works.
  *
- * The agent script is loaded via next/script with strategy="afterInteractive".
- * pendo.initialize() runs once Clerk has resolved the visitor identity, so
- * visitor.id and account.id are always defined before the first event fires.
+ * For the public demo we generate a stable per-browser visitor ID stored in
+ * localStorage. account.id is hardcoded so all events roll up to one account.
  */
-export function PendoSnippet() {
-  const { isLoaded, user } = useUser();
+function getOrCreateVisitorId(): string {
+  if (typeof window === 'undefined') return 'ssr';
+  const KEY = 'lumen-pendo-visitor-id';
+  let id = window.localStorage.getItem(KEY);
+  if (!id) {
+    id = 'demo-' + Math.random().toString(36).slice(2, 10);
+    window.localStorage.setItem(KEY, id);
+  }
+  return id;
+}
 
+export function PendoSnippet() {
   useEffect(() => {
-    if (!PENDO_API_KEY || !isLoaded || !window.pendo) return;
-    const visitorId = user?.id ?? 'anonymous-' + Math.random().toString(36).slice(2, 10);
+    if (!PENDO_API_KEY || !window.pendo) return;
     window.pendo.initialize({
-      visitor: {
-        id: visitorId,
-        email: user?.primaryEmailAddress?.emailAddress
-      },
-      account: {
-        id: 'lumen-health-demo',
-        name: 'Lumen Health Demo'
-      }
+      visitor: { id: getOrCreateVisitorId() },
+      account: { id: 'lumen-health-demo', name: 'Lumen Health Demo' }
     });
-  }, [isLoaded, user]);
+  }, []);
 
   if (!PENDO_API_KEY) return null;
 
