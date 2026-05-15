@@ -77,7 +77,7 @@ export default function HomePage() {
         <h1 className='mt-3 text-3xl font-bold tracking-tight md:text-4xl'>
           Your visit, in your words.
         </h1>
-        <p className='text-muted-foreground mt-3 max-w-2xl leading-relaxed'>
+        <p className='text-muted-foreground mt-3 max-w-4xl leading-relaxed'>
           Lumen Health is a patient-facing post-visit companion. It translates the clinical note
           your doctor wrote into plain language, with action items you can check off, medication
           instructions you can actually follow, and a glossary for every term you did not catch.
@@ -145,7 +145,7 @@ export default function HomePage() {
       {/* About */}
       <section className='mb-4'>
         <Card>
-          <CardContent className='space-y-3 pt-6'>
+          <CardContent className='space-y-3 py-4'>
             <div className='flex items-center gap-2'>
               <Icons.info className='text-muted-foreground size-4' />
               <span className='text-sm font-semibold'>About this project</span>
