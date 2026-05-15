@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { navGroups } from '@/config/nav-config';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
@@ -30,9 +31,15 @@ export default function AppSidebar() {
       style={{ ['--sidebar-width-icon' as string]: '5rem' }}
     >
       {/* Header height matches the page Header (h-16 / md:h-14) so the brand
-          mark aligns vertically with the breadcrumb across the divider. */}
+          mark aligns vertically with the breadcrumb across the divider.
+          The whole brand mark links to /dashboard/home — the welcome page
+          with the quick guide. */}
       <SidebarHeader className='h-16 justify-center !p-0 md:h-14'>
-        <div className='flex h-full items-center gap-2.5 px-3 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'>
+        <Link
+          href='/dashboard/home'
+          aria-label='Lumen Health home'
+          className='hover:bg-sidebar-accent/50 flex h-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
+        >
           {/* Brand mark, softer treatment so it doesn't read as an active nav state. */}
           <div className='border-primary/20 bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md border'>
             <Icons.heartbeat className='size-5' />
@@ -43,7 +50,7 @@ export default function AppSidebar() {
               Your visit, in your words
             </span>
           </div>
-        </div>
+        </Link>
       </SidebarHeader>
       <SidebarContent className='overflow-x-hidden'>
         {navGroups.map((group) => (

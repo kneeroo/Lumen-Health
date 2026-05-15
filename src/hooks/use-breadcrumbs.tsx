@@ -11,6 +11,7 @@ type BreadcrumbItem = {
 // Lumen Health: friendly breadcrumb labels per route. The "Dashboard"
 // segment is always stripped so the crumb only shows where the user is.
 const routeMapping: Record<string, BreadcrumbItem[]> = {
+  '/dashboard/home': [{ title: 'Home', link: '/dashboard/home' }],
   '/dashboard/overview': [{ title: 'My Visits', link: '/dashboard/overview' }],
   '/dashboard/actions': [{ title: 'Action Items', link: '/dashboard/actions' }],
   '/dashboard/medications': [{ title: 'Medications', link: '/dashboard/medications' }],
