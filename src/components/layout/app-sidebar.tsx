@@ -135,10 +135,9 @@ export default function AppSidebar() {
               <TooltipTrigger asChild>
                 <SidebarMenuButton
                   size='lg'
-                  isActive={pathname === '/profile'}
                   onClick={() => router.push('/profile')}
                   onMouseEnter={() => router.prefetch('/profile')}
-                  className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0'
+                  className='group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0'
                 >
                   <Avatar className='h-8 w-8 rounded-lg'>
                     <AvatarFallback className='bg-primary/10 text-primary rounded-lg text-xs font-medium'>
