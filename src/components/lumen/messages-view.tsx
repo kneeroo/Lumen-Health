@@ -89,7 +89,7 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
   }
 
   return (
-    <Card className='grid h-[640px] grid-cols-[280px_1fr] overflow-hidden p-0'>
+    <Card className='grid h-[calc(100svh-13rem)] max-h-[640px] min-h-[360px] grid-cols-[140px_1fr] overflow-hidden p-0 sm:grid-cols-[280px_1fr]'>
       {/* Thread list */}
       <aside className='border-border/60 overflow-y-auto border-r'>
         <ul>

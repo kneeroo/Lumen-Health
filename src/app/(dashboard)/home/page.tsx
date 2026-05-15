@@ -155,27 +155,20 @@ export default function HomePage() {
           <p className='text-muted-foreground mt-0.5 text-sm'>
             Six places to explore. Click a card to jump in.
           </p>
-          <div className='mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3'>
+          <div className='mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6'>
             {features.map((f) => {
               const Icon = Icons[f.icon];
               const color = navIconColor[f.href];
               const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
               return (
                 <Link key={f.href} href={f.href} className='group block'>
-                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 h-full gap-2 py-4 transition-colors'>
-                    <CardHeader className='gap-1 px-4'>
-                      <div className='flex items-center gap-3'>
-                        <div
-                          className={`flex size-9 shrink-0 items-center justify-center rounded-md ${boxClass}`}
-                        >
-                          <Icon className='size-5' />
-                        </div>
-                        <CardTitle className='text-base'>{f.title}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className='text-muted-foreground px-4 text-sm leading-snug'>
-                      {f.description}
-                    </CardContent>
+                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 flex aspect-square h-full flex-col items-center justify-center gap-3 px-3 py-4 text-center transition-colors'>
+                    <div
+                      className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${boxClass}`}
+                    >
+                      <Icon className='size-6' />
+                    </div>
+                    <CardTitle className='text-sm leading-tight'>{f.title}</CardTitle>
                   </Card>
                 </Link>
               );

@@ -42,20 +42,16 @@ export default function ProfilePage() {
       <div className='grid items-start gap-4 lg:grid-cols-[280px_1fr]'>
         {/* Identity card — items-start on the grid + self-start here keeps it
             from stretching to match the height of the detail column. */}
-        <Card className='self-start'>
-          <CardContent className='flex flex-col items-center gap-3 text-center'>
-            <Avatar className='size-20 rounded-2xl'>
-              <AvatarFallback className='bg-primary/10 text-primary rounded-2xl text-2xl font-semibold'>
+        <Card className='self-start py-4'>
+          <CardContent className='flex flex-col items-center gap-2 text-center'>
+            <Avatar className='size-16 rounded-2xl'>
+              <AvatarFallback className='bg-primary/10 text-primary rounded-2xl text-xl font-semibold'>
                 DP
               </AvatarFallback>
             </Avatar>
             <div>
-              <div className='text-lg font-semibold'>Demo Patient</div>
-              <div className='text-muted-foreground text-sm'>demo@lumenhealth.app</div>
-            </div>
-            <div className='text-muted-foreground flex items-center gap-1.5 text-xs'>
-              <Icons.lock className='size-3' />
-              Profile visible only to you and your care team
+              <div className='text-base font-semibold'>Demo Patient</div>
+              <div className='text-muted-foreground text-xs'>demo@lumenhealth.app</div>
             </div>
           </CardContent>
         </Card>
@@ -74,8 +70,8 @@ export default function ProfilePage() {
 
 function ProfileSection({ title, fields }: { title: string; fields: Field[] }) {
   return (
-    <Card>
-      <CardHeader className='pb-3'>
+    <Card className='gap-3 py-4'>
+      <CardHeader className='!pb-0'>
         <CardTitle className='text-base'>{title}</CardTitle>
       </CardHeader>
       <CardContent>

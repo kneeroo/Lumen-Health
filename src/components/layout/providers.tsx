@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { ActiveThemeProvider } from '../themes/active-theme';
+import { ThemeColorSync } from '../themes/theme-color-sync';
 import QueryProvider from './query-provider';
 import { PendoSnippet } from '@/components/lumen/pendo-snippet';
 
@@ -15,6 +16,7 @@ export default function Providers({
     <ActiveThemeProvider initialTheme={activeThemeValue}>
       <QueryProvider>{children}</QueryProvider>
       <PendoSnippet />
+      <ThemeColorSync />
     </ActiveThemeProvider>
   );
 }

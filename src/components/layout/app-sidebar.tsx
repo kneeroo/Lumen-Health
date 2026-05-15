@@ -18,8 +18,23 @@ import { navGroups } from '@/config/nav-config';
 import { iconTextClass, navIconColor } from '@/lib/nav-icon-colors';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+// nprogress ships without types; we only call .start(), so no full types needed.
+// @ts-expect-error -- no types for nprogress in the transitive dep
+import * as NProgress from 'nprogress';
 import * as React from 'react';
 import { Icons } from '../icons';
+
+/**
+ * router.push doesn't always trigger NextTopLoader visibly when the route
+ * has been prefetched (the navigation can resolve faster than the loader's
+ * own start/done cycle). We manually kick off NProgress here so the bar
+ * pops immediately on every sidebar click; NextTopLoader's internal listener
+ * will call NProgress.done() when the new route paints.
+ */
+function navigate(router: ReturnType<typeof useRouter>, url: string) {
+  NProgress.start();
+  router.push(url);
+}
 
 export default function AppSidebar() {
   const pathname = usePathname();
@@ -108,7 +123,7 @@ export default function AppSidebar() {
                     <SidebarMenuButton
                       tooltip={item.title}
                       isActive={isActive}
-                      onClick={() => router.push(item.url)}
+                      onClick={() => navigate(router, item.url)}
                       onMouseEnter={() => router.prefetch(item.url)}
                       className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
@@ -135,7 +150,7 @@ export default function AppSidebar() {
               <TooltipTrigger asChild>
                 <SidebarMenuButton
                   size='lg'
-                  onClick={() => router.push('/profile')}
+                  onClick={() => navigate(router, '/profile')}
                   onMouseEnter={() => router.prefetch('/profile')}
                   className='group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0'
                 >
