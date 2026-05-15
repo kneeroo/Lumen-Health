@@ -50,7 +50,7 @@ export default function AppSidebar() {
               href='/dashboard/home'
               aria-label='Lumen Health home'
               onMouseEnter={() => router.prefetch('/dashboard/home')}
-              className='hover:bg-sidebar-accent/50 flex h-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
+              className='hover:bg-sidebar-accent/50 flex h-full w-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
             >
               {/* Brand mark — gets the active state styling when the user is
                   on the home page, so it reads like the other nav items. */}

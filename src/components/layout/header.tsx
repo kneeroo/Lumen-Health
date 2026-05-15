@@ -1,5 +1,5 @@
 import React from 'react';
-import { SidebarTrigger } from '../ui/sidebar';
+import { SidebarTriggerWithTooltip } from './sidebar-trigger-with-tooltip';
 import { Separator } from '../ui/separator';
 import { Breadcrumbs } from '../breadcrumbs';
 import SearchInput from '../search-input';
@@ -11,7 +11,7 @@ export default function Header() {
     <header className='bg-background/60 sticky top-0 z-20 flex h-16 shrink-0 items-center justify-between backdrop-blur-md md:h-14'>
       {/* Tight left padding so the trigger sits just beyond the sidebar edge. */}
       <div className='flex items-center gap-3 pr-4 pl-2 md:pl-3'>
-        <SidebarTrigger />
+        <SidebarTriggerWithTooltip />
         <Separator orientation='vertical' className='mr-2 h-4' />
         <Breadcrumbs />
       </div>
