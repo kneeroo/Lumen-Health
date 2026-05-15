@@ -1,11 +1,11 @@
 import PageContainer from '@/components/layout/page-container';
 import { ActionItems } from '@/components/lumen/action-items';
+import { AskQuestionButton } from '@/components/lumen/ask-question-button';
 import { MedicationList } from '@/components/lumen/medication-list';
 import { VisitSummary } from '@/components/lumen/visit-summary';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Icons } from '@/components/icons';
 import { getMostRecentVisit, getVisit } from '@/lib/mock-visits';
-import { IconMessageCircle } from '@tabler/icons-react';
 
 export const metadata = {
   title: 'Patient Portal · Lumen Health'
@@ -25,9 +25,9 @@ export default async function PatientPortalPage({
       pageDescription={`${visit.date} · ${visit.clinician} (${visit.clinicianTitle})`}
     >
       <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
-        <div className='lg:col-span-2 space-y-4'>
+        <div className='space-y-4 lg:col-span-2'>
           <VisitSummary visit={visit} />
-          <ActionItems items={visit.actionItems} />
+          <ActionItems items={visit.actionItems} visitId={visit.id} />
         </div>
         <div className='space-y-4'>
           <MedicationList items={visit.medications} />
@@ -36,13 +36,26 @@ export default async function PatientPortalPage({
               <div>
                 <div className='font-medium'>Have a question about this visit?</div>
                 <p className='text-muted-foreground text-sm'>
-                  Ask about anything that was discussed and get a plain-language answer.
+                  Send a message to your care team and get a reply within one business day.
                 </p>
               </div>
-              <Button variant='outline' className='w-full' disabled>
-                <IconMessageCircle className='mr-2 size-4' />
-                Ask a question (coming soon)
-              </Button>
+              <AskQuestionButton
+                context={{
+                  visitId: visit.id,
+                  visitTopic: visit.primaryTopic,
+                  visitDate: visit.date,
+                  clinician: visit.clinician,
+                  clinicianTitle: visit.clinicianTitle
+                }}
+              />
+              <div className='flex items-start gap-2 rounded-md border border-amber-200 bg-amber-50/60 p-3 text-xs leading-relaxed text-amber-900'>
+                <Icons.warning className='mt-0.5 size-3.5 shrink-0' />
+                <p>
+                  Lumen Health messages are for non-urgent questions and follow-ups. If something
+                  feels serious, like chest pain, severe symptoms, or a medical emergency, call 000
+                  or your clinic directly rather than waiting for a reply.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>

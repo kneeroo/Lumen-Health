@@ -6,13 +6,61 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Icons } from '@/components/icons';
+import { PENDING_QUESTION_KEY, type PendingQuestion } from '@/components/lumen/ask-question-button';
 import type { Message, Thread } from '@/lib/mock-messages';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+function initialsFromName(name: string): string {
+  return name
+    .replace(/^(Dr\.?\s+)/i, '')
+    .split(/\s+/)
+    .map((p) => p[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
 
 export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
   const [threads, setThreads] = useState<Thread[]>(initialThreads);
   const [activeId, setActiveId] = useState<string>(initialThreads[0]?.id ?? '');
   const [draft, setDraft] = useState('');
+  const composerRef = useRef<HTMLTextAreaElement | null>(null);
+
+  // If the user clicked "Ask a question" on a visit, we created a draft
+  // thread context in sessionStorage. Pick it up here, create a new thread
+  // (or reuse one already started for this visit), and pre-fill the composer.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const raw = window.sessionStorage.getItem(PENDING_QUESTION_KEY);
+    if (!raw) return;
+    let ctx: PendingQuestion;
+    try {
+      ctx = JSON.parse(raw);
+    } catch {
+      window.sessionStorage.removeItem(PENDING_QUESTION_KEY);
+      return;
+    }
+    window.sessionStorage.removeItem(PENDING_QUESTION_KEY);
+
+    const newThreadId = `t-question-${ctx.visitId}-${Date.now()}`;
+    const newThread: Thread = {
+      id: newThreadId,
+      from: ctx.clinician,
+      role: ctx.clinicianTitle,
+      initials: initialsFromName(ctx.clinician),
+      topic: `Question about ${ctx.visitTopic}`,
+      lastDate: 'Just now',
+      messages: []
+    };
+    setThreads((prev) => [newThread, ...prev]);
+    setActiveId(newThreadId);
+    setDraft(
+      `Hi ${ctx.clinician.split(' ').slice(0, 2).join(' ')}, I had a question about my ${ctx.visitTopic.toLowerCase()} visit on ${ctx.visitDate}: `
+    );
+    // Focus the composer next tick so the user can keep typing.
+    setTimeout(() => composerRef.current?.focus(), 50);
+  }, []);
 
   const active = useMemo(() => threads.find((t) => t.id === activeId), [threads, activeId]);
 
@@ -113,6 +161,7 @@ export function MessagesView({ initialThreads }: { initialThreads: Thread[] }) {
 
             <footer className='border-border/60 space-y-2 border-t p-3'>
               <Textarea
+                ref={composerRef}
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 placeholder='Write a reply…'
