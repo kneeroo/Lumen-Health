@@ -54,6 +54,14 @@ export const navGroups: NavGroup[] = [
     label: 'Account',
     items: [
       {
+        title: 'Profile',
+        url: '/profile',
+        icon: 'profile',
+        isActive: false,
+        shortcut: ['p', 'r'],
+        items: []
+      },
+      {
         title: 'Notifications',
         url: '/notifications',
         icon: 'notification',

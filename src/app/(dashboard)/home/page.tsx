@@ -1,7 +1,7 @@
 import PageContainer from '@/components/layout/page-container';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/icons';
 import { getMostRecentVisit } from '@/lib/mock-visits';
 import { iconBoxClass, navIconColor } from '@/lib/nav-icon-colors';
@@ -21,37 +21,43 @@ type Feature = {
 const features: Feature[] = [
   {
     title: 'My Visits',
-    description: 'Every consultation, in plain language.',
+    description:
+      'Every consultation, summarised in plain language. Open a visit to see what was discussed, what you agreed to do, and what was prescribed.',
     href: '/visits',
     icon: 'visit'
   },
   {
     title: 'Action Items',
-    description: 'What your care team asked you to do.',
+    description:
+      'Everything your care team has asked you to do, across every visit. Daily tasks track a weekly streak. One-off tasks check off.',
     href: '/actions',
     icon: 'checks'
   },
   {
     title: 'Medications',
-    description: 'Dose, schedule, side effects, refills.',
+    description:
+      'Current and past prescriptions. Tap a medication for dose, schedule, side effects, and what to call about.',
     href: '/medications',
     icon: 'pill'
   },
   {
     title: 'Lab Results',
-    description: 'Numbers with reference ranges and flags.',
+    description:
+      'Test results grouped by visit, with reference ranges and a colour-coded flag so you know whether a number is in target.',
     href: '/labs',
     icon: 'reportMedical'
   },
   {
     title: 'Messages',
-    description: 'Private threads with your care team.',
+    description:
+      'Private conversations with your care team. Routine replies arrive within one business day.',
     href: '/chat',
     icon: 'chat'
   },
   {
     title: 'Notifications',
-    description: 'Reminders and alerts, all in one place.',
+    description:
+      'Lab results, message replies, appointment reminders, and action item nudges, all in one place.',
     href: '/notifications',
     icon: 'notification'
   }
@@ -63,7 +69,7 @@ export default function HomePage() {
   return (
     <PageContainer>
       <div className='flex flex-col gap-4'>
-        {/* Hero banner — compact */}
+        {/* Hero banner */}
         <section>
           <div className='relative overflow-hidden rounded-2xl border border-emerald-200/60 bg-gradient-to-br from-emerald-50 via-card to-emerald-50/40 px-6 py-6 md:px-10 md:py-8 dark:border-emerald-900/40 dark:from-emerald-950/40 dark:via-card dark:to-emerald-950/20'>
             <div
@@ -86,9 +92,11 @@ export default function HomePage() {
                     in your words.
                   </span>
                 </h1>
-                <p className='text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed md:text-base'>
-                  A patient-facing post-visit companion. Plain-language summaries, action items you
-                  can check off, and medication instructions you can actually follow.
+                <p className='text-muted-foreground mt-2 max-w-3xl text-sm leading-relaxed'>
+                  Lumen Health is a patient-facing post-visit companion. It translates the clinical
+                  note your doctor wrote into plain language, with action items you can check off,
+                  medication instructions you can actually follow, and a glossary for every term you
+                  did not catch.
                 </p>
                 <div className='mt-4 flex flex-wrap gap-2'>
                   <Button asChild className='shadow-sm shadow-emerald-600/20'>
@@ -125,43 +133,87 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Compact disclaimer pill */}
+        {/* Demo disclaimer */}
         <section>
-          <div className='flex flex-wrap items-center gap-2 rounded-md border border-amber-200 bg-amber-50/60 dark:bg-card dark:border-amber-900/50 dark:text-amber-300 px-3 py-2 text-xs text-amber-900'>
-            <Icons.warning className='size-3.5 shrink-0' />
-            <span>
-              <span className='font-semibold'>Demo only.</span> Not real PHI. For emergencies call
-              000 or your clinic directly.
-            </span>
+          <div className='rounded-md border border-amber-200 bg-amber-50/60 p-3 text-xs text-amber-900 dark:border-amber-900/50 dark:bg-card dark:text-amber-300'>
+            <div className='flex items-start gap-2'>
+              <Icons.warning className='mt-0.5 size-3.5 shrink-0' />
+              <div>
+                <span className='font-semibold'>This is a demo, not a real medical record.</span>{' '}
+                Patient data and clinicians shown here are fictional. Do not use Lumen Health for
+                actual clinical care. For emergencies, call 000 (or your local emergency number).
+                For urgent concerns, call your clinic directly.
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Quick guide — compact grid */}
+        {/* Quick guide */}
         <section>
-          <div className='grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6'>
+          <h2 className='text-base font-semibold tracking-tight'>What is in here</h2>
+          <p className='text-muted-foreground mt-0.5 text-xs'>
+            Six places to explore. Click a card to jump in.
+          </p>
+          <div className='mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3'>
             {features.map((f) => {
               const Icon = Icons[f.icon];
               const color = navIconColor[f.href];
               const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
               return (
                 <Link key={f.href} href={f.href} className='group block'>
-                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 h-full gap-0 py-3 transition-colors'>
-                    <CardContent className='px-3'>
-                      <div
-                        className={`flex size-9 shrink-0 items-center justify-center rounded-md ${boxClass}`}
-                      >
-                        <Icon className='size-5' />
+                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 h-full gap-2 py-3 transition-colors'>
+                    <CardHeader className='gap-1 px-4'>
+                      <div className='flex items-center gap-2.5'>
+                        <div
+                          className={`flex size-8 shrink-0 items-center justify-center rounded-md ${boxClass}`}
+                        >
+                          <Icon className='size-4' />
+                        </div>
+                        <CardTitle className='text-sm'>{f.title}</CardTitle>
                       </div>
-                      <div className='mt-2 text-sm font-semibold'>{f.title}</div>
-                      <div className='text-muted-foreground mt-1 text-xs leading-snug'>
-                        {f.description}
-                      </div>
+                    </CardHeader>
+                    <CardContent className='text-muted-foreground px-4 text-xs leading-snug'>
+                      {f.description}
                     </CardContent>
                   </Card>
                 </Link>
               );
             })}
           </div>
+        </section>
+
+        {/* About */}
+        <section>
+          <Card>
+            <CardContent className='space-y-1.5 py-3'>
+              <div className='flex items-center gap-2'>
+                <Icons.info className='text-muted-foreground size-3.5' />
+                <span className='text-xs font-semibold'>About this project</span>
+              </div>
+              <p className='text-muted-foreground text-xs leading-relaxed'>
+                Lumen Health is a thought experiment by{' '}
+                <a
+                  href='https://www.linkedin.com/in/nirooa/'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='hover:text-foreground underline-offset-4 hover:underline'
+                >
+                  Niroo Arjuna
+                </a>{' '}
+                on what could sit between a clinical scribe (like Heidi Scribe) and patient
+                messaging (like Heidi Comms).{' '}
+                <a
+                  href='https://github.com/kneeroo/Lumen-Health'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='hover:text-foreground inline-flex items-center gap-1 underline-offset-4 hover:underline'
+                >
+                  <Icons.github className='size-3' />
+                  kneeroo/Lumen-Health
+                </a>
+              </p>
+            </CardContent>
+          </Card>
         </section>
       </div>
     </PageContainer>

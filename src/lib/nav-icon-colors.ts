@@ -12,6 +12,7 @@ export const navIconColor: Record<string, IconColor> = {
   '/medications': 'green',
   '/labs': 'green',
   '/chat': 'green',
+  '/profile': 'green',
   '/notifications': 'green'
 };
 

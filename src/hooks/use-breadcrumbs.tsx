@@ -17,6 +17,7 @@ const routeMapping: Record<string, BreadcrumbItem[]> = {
   '/medications': [{ title: 'Medications', link: '/medications' }],
   '/labs': [{ title: 'Lab Results', link: '/labs' }],
   '/chat': [{ title: 'Messages', link: '/chat' }],
+  '/profile': [{ title: 'Profile', link: '/profile' }],
   '/notifications': [{ title: 'Notifications', link: '/notifications' }],
   '/patient-portal': [
     { title: 'My Visits', link: '/visits' },
