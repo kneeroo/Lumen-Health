@@ -12,6 +12,7 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { navGroups } from '@/config/nav-config';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -43,22 +44,37 @@ export default function AppSidebar() {
           The whole brand mark links to /dashboard/home — the welcome page
           with the quick guide. */}
       <SidebarHeader className='h-16 justify-center !p-0 md:h-14'>
-        <Link
-          href='/dashboard/home'
-          aria-label='Lumen Health home'
-          className='hover:bg-sidebar-accent/50 flex h-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
-        >
-          {/* Brand mark, softer treatment so it doesn't read as an active nav state. */}
-          <div className='border-primary/20 bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md border'>
-            <Icons.heartbeat className='size-5' />
-          </div>
-          <div className='flex min-w-0 flex-col leading-none group-data-[collapsible=icon]:hidden'>
-            <span className='text-foreground text-sm font-semibold'>Lumen Health</span>
-            <span className='text-muted-foreground truncate text-xs'>
-              Your visit, in your words
-            </span>
-          </div>
-        </Link>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              href='/dashboard/home'
+              aria-label='Lumen Health home'
+              onMouseEnter={() => router.prefetch('/dashboard/home')}
+              className='hover:bg-sidebar-accent/50 flex h-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
+            >
+              {/* Brand mark — gets the active state styling when the user is
+                  on the home page, so it reads like the other nav items. */}
+              <div
+                className={
+                  pathname === '/dashboard/home'
+                    ? 'bg-primary text-primary-foreground flex size-9 shrink-0 items-center justify-center rounded-md'
+                    : 'border-primary/20 bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md border'
+                }
+              >
+                <Icons.heartbeat className='size-5' />
+              </div>
+              <div className='flex min-w-0 flex-col leading-none group-data-[collapsible=icon]:hidden'>
+                <span className='text-foreground text-sm font-semibold'>Lumen Health</span>
+                <span className='text-muted-foreground truncate text-xs'>
+                  Your visit, in your words
+                </span>
+              </div>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side='right' align='center'>
+            Home
+          </TooltipContent>
+        </Tooltip>
       </SidebarHeader>
       <SidebarContent className='overflow-x-hidden'>
         {navGroups.map((group) => (
