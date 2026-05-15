@@ -164,16 +164,16 @@ export default function HomePage() {
               className='pointer-events-none absolute -bottom-20 right-1/3 h-56 w-56 rounded-full bg-indigo-300/10 blur-3xl'
             />
 
-            <div className='relative grid grid-cols-[auto_1fr] items-center gap-5 md:gap-8'>
-              <div className='flex'>
+            <div className='relative md:grid md:grid-cols-[auto_1fr] md:items-center md:gap-8'>
+              <div className='hidden md:flex'>
                 <div className='relative'>
                   <div
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-3 shadow-xl shadow-indigo-600/10 backdrop-blur-md md:p-5 dark:border-indigo-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-5 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
                     <Icons.info
-                      className='size-10 text-indigo-600 md:size-16 dark:text-indigo-400'
+                      className='size-16 text-indigo-600 dark:text-indigo-400'
                       strokeWidth={1.5}
                     />
                   </div>
@@ -181,15 +181,31 @@ export default function HomePage() {
               </div>
 
               <div>
-                <p className='text-xs font-semibold tracking-widest text-indigo-700 uppercase dark:text-indigo-300'>
-                  About this project
-                </p>
-                <h2 className='mt-1.5 text-2xl font-bold tracking-tight md:text-3xl'>
-                  A thought experiment in{' '}
-                  <span className='bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-200'>
-                    post-visit care.
-                  </span>
-                </h2>
+                <div className='flex items-start justify-between gap-4'>
+                  <div className='min-w-0'>
+                    <p className='text-xs font-semibold tracking-widest text-indigo-700 uppercase dark:text-indigo-300'>
+                      About this project
+                    </p>
+                    <h2 className='mt-1.5 text-2xl font-bold tracking-tight md:text-3xl'>
+                      A thought experiment in{' '}
+                      <span className='bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-200'>
+                        post-visit care.
+                      </span>
+                    </h2>
+                  </div>
+                  <div className='relative shrink-0 md:hidden'>
+                    <div
+                      aria-hidden
+                      className='absolute inset-0 -z-10 rounded-full bg-indigo-400/30 blur-3xl'
+                    />
+                    <div className='rounded-2xl border border-indigo-200/70 bg-white/70 p-3 shadow-xl shadow-indigo-600/10 backdrop-blur-md dark:border-indigo-800/40 dark:bg-card/60'>
+                      <Icons.info
+                        className='size-10 text-indigo-600 dark:text-indigo-400'
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <p className='text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed md:text-base'>
                   Lumen Health is a thought experiment by{' '}
                   <a
