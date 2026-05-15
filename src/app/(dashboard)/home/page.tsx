@@ -155,20 +155,23 @@ export default function HomePage() {
           <p className='text-muted-foreground mt-0.5 text-sm'>
             Six places to explore. Click a card to jump in.
           </p>
-          <div className='mt-3 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6'>
+          <div className='mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
             {features.map((f) => {
               const Icon = Icons[f.icon];
               const color = navIconColor[f.href];
               const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
               return (
                 <Link key={f.href} href={f.href} className='group block'>
-                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 flex aspect-square h-full flex-col items-center justify-center gap-3 px-3 py-4 text-center transition-colors'>
-                    <div
-                      className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${boxClass}`}
-                    >
-                      <Icon className='size-6' />
+                  <Card className='hover:border-emerald-300 hover:bg-emerald-50/30 dark:hover:bg-emerald-950/20 flex h-full flex-col gap-3 px-5 py-5 transition-colors'>
+                    <div className='flex items-center gap-3'>
+                      <div
+                        className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${boxClass}`}
+                      >
+                        <Icon className='size-6' />
+                      </div>
+                      <CardTitle className='text-base'>{f.title}</CardTitle>
                     </div>
-                    <CardTitle className='text-sm leading-tight'>{f.title}</CardTitle>
+                    <p className='text-muted-foreground text-sm leading-snug'>{f.description}</p>
                   </Card>
                 </Link>
               );
