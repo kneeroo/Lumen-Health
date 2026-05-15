@@ -3,8 +3,8 @@ import { Icons } from '@/components/icons';
 export function SiteFooter() {
   return (
     <footer className='border-border/60 mt-auto border-t'>
-      <div className='mx-auto flex flex-col items-center gap-3 px-4 py-5 text-center text-xs sm:flex-row sm:items-center sm:justify-between sm:text-left md:px-6'>
-        <div className='text-muted-foreground'>
+      <div className='mx-auto flex flex-col items-center gap-3 px-4 py-5 text-center text-xs sm:grid sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6 sm:text-left md:px-6'>
+        <div className='text-muted-foreground sm:text-left'>
           <span className='font-medium'>Lumen Health</span> — a thought experiment by{' '}
           <a
             href='https://www.linkedin.com/in/nirooa/'
@@ -16,7 +16,7 @@ export function SiteFooter() {
           </a>
           . Demo only — not real PHI, not for clinical use.
         </div>
-        <div className='text-muted-foreground flex flex-wrap items-center justify-center gap-3 sm:justify-end'>
+        <div className='text-muted-foreground flex flex-wrap items-center justify-center gap-3'>
           <a
             href='https://github.com/kneeroo/Lumen-Health'
             target='_blank'
@@ -40,6 +40,8 @@ export function SiteFooter() {
             (MIT)
           </span>
         </div>
+        {/* Empty third column on desktop — keeps the github cluster centered. */}
+        <div className='hidden sm:block' aria-hidden />
       </div>
     </footer>
   );
