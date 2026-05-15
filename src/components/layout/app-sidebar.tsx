@@ -44,13 +44,15 @@ export default function AppSidebar() {
             <SidebarMenu>
               {group.items.map((item) => {
                 const Icon = item.icon ? Icons[item.icon] : Icons.logo;
+                // My Visits is the active item when on its own page OR on the
+                // patient-portal detail page (which is opened from a visit card).
+                const isActive =
+                  pathname === item.url ||
+                  (item.url === '/dashboard/overview' &&
+                    pathname.startsWith('/dashboard/patient-portal'));
                 return (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      tooltip={item.title}
-                      isActive={pathname === item.url}
-                    >
+                    <SidebarMenuButton asChild tooltip={item.title} isActive={isActive}>
                       <Link href={item.url}>
                         <Icon />
                         <span>{item.title}</span>

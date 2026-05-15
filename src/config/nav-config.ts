@@ -17,11 +17,19 @@ export const navGroups: NavGroup[] = [
         items: []
       },
       {
-        title: 'Patient Portal',
-        url: '/dashboard/patient-portal',
-        icon: 'patientPortal',
+        title: 'Medications',
+        url: '/dashboard/medications',
+        icon: 'pill',
         isActive: false,
-        shortcut: ['p', 'p'],
+        shortcut: ['m', 'd'],
+        items: []
+      },
+      {
+        title: 'Lab Results',
+        url: '/dashboard/labs',
+        icon: 'reportMedical',
+        isActive: false,
+        shortcut: ['l', 'l'],
         items: []
       },
       {
