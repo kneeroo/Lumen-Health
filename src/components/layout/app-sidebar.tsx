@@ -27,9 +27,11 @@ export default function AppSidebar() {
       // Wider collapsed mode so icon buttons aren't flush against the rail.
       style={{ ['--sidebar-width-icon' as string]: '4rem' }}
     >
-      <SidebarHeader className='group-data-[collapsible=icon]:pt-4'>
-        <div className='flex items-center gap-2.5 px-2 py-2 group-data-[collapsible=icon]:justify-center'>
-          {/* Brand mark — softer treatment so it doesn't read as an active nav state. */}
+      {/* Header height matches the page Header (h-16 / md:h-14) so the brand
+          mark aligns vertically with the breadcrumb across the divider. */}
+      <SidebarHeader className='h-16 justify-center !p-0 md:h-14'>
+        <div className='flex h-full items-center gap-2.5 px-3 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'>
+          {/* Brand mark, softer treatment so it doesn't read as an active nav state. */}
           <div className='border-primary/20 bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md border'>
             <Icons.heartbeat className='size-5' />
           </div>
