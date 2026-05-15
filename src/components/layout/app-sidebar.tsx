@@ -70,7 +70,7 @@ export default function AppSidebar() {
               <div
                 className={
                   pathname === '/home'
-                    ? 'bg-primary flex size-9 shrink-0 items-center justify-center rounded-md text-emerald-400 dark:text-emerald-300'
+                    ? 'bg-primary flex size-9 shrink-0 items-center justify-center rounded-md text-emerald-400 dark:text-emerald-100'
                     : `border-2 border-emerald-700 bg-emerald-500/10 ${iconTextClass.green} flex size-9 shrink-0 items-center justify-center rounded-md`
                 }
               >
@@ -114,7 +114,7 @@ export default function AppSidebar() {
                 // emerald against the light sidebar background; active uses
                 // a lighter emerald that pops on the bg-primary dark button.
                 const iconClass = isActive
-                  ? 'text-emerald-400 dark:text-emerald-300'
+                  ? 'text-emerald-400 dark:text-emerald-100'
                   : iconColor
                     ? iconTextClass[iconColor]
                     : '';
