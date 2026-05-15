@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Icons } from '@/components/icons';
 import { getMostRecentVisit } from '@/lib/mock-visits';
+import { iconBoxClass, navIconColor } from '@/lib/nav-icon-colors';
 import Link from 'next/link';
 
 export const metadata = {
@@ -121,12 +122,16 @@ export default function HomePage() {
         <div className='mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3'>
           {features.map((f) => {
             const Icon = Icons[f.icon];
+            const color = navIconColor[f.href];
+            const boxClass = color ? iconBoxClass[color] : 'bg-primary/10 text-primary';
             return (
               <Link key={f.href} href={f.href} className='group block'>
                 <Card className='hover:border-primary/40 hover:bg-muted/30 h-full transition-colors'>
                   <CardHeader>
                     <div className='flex items-center gap-3'>
-                      <div className='bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md'>
+                      <div
+                        className={`flex size-9 shrink-0 items-center justify-center rounded-md ${boxClass}`}
+                      >
                         <Icon className='size-5' />
                       </div>
                       <CardTitle className='text-base'>{f.title}</CardTitle>

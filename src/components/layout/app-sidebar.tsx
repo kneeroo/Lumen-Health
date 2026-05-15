@@ -15,6 +15,7 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { navGroups } from '@/config/nav-config';
+import { iconTextClass, navIconColor } from '@/lib/nav-icon-colors';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import * as React from 'react';
@@ -49,12 +50,14 @@ export default function AppSidebar() {
               className='hover:bg-sidebar-accent/50 flex h-full w-full items-center gap-2.5 px-3 transition-colors group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0'
             >
               {/* Brand mark — gets the active state styling when the user is
-                  on the home page, so it reads like the other nav items. */}
+                  on the home page, so it reads like the other nav items.
+                  Otherwise the heart shows in its dedicated brand colour
+                  (red) for visual identity. */}
               <div
                 className={
                   pathname === '/dashboard/home'
                     ? 'bg-primary text-primary-foreground flex size-9 shrink-0 items-center justify-center rounded-md'
-                    : 'border-primary/20 bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-md border'
+                    : `border-red-200 bg-red-500/10 ${iconTextClass.red} flex size-9 shrink-0 items-center justify-center rounded-md border`
                 }
               >
                 <Icons.heartbeat className='size-5' />
@@ -85,13 +88,13 @@ export default function AppSidebar() {
                   pathname === item.url ||
                   (item.url === '/dashboard/overview' &&
                     pathname.startsWith('/dashboard/patient-portal'));
+                const iconColor = navIconColor[item.url];
+                // Icon takes its per-route tint only when not active. The
+                // active button uses bg-primary/text-primary-foreground so
+                // the icon becomes white on a dark background.
+                const iconClass = !isActive && iconColor ? iconTextClass[iconColor] : '';
                 return (
                   <SidebarMenuItem key={item.title}>
-                    {/* Plain button with onClick + router.push so the full
-                        button area is the click target (no Slot/Link forwarding
-                        that was shrinking the Messages hit area).
-                        Prefetching is handled by the useEffect above plus the
-                        onMouseEnter, so navigation still feels instant. */}
                     <SidebarMenuButton
                       tooltip={item.title}
                       isActive={isActive}
@@ -99,7 +102,7 @@ export default function AppSidebar() {
                       onMouseEnter={() => router.prefetch(item.url)}
                       className='data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:hover:bg-primary/90 data-[active=true]:hover:text-primary-foreground gap-3 rounded-md py-5 font-medium [&>svg]:!size-5 group-data-[collapsible=icon]:!mx-auto group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!p-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:[&>span]:hidden'
                     >
-                      <Icon />
+                      <Icon className={iconClass} />
                       <span className='text-sm'>{item.title}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
