@@ -87,14 +87,30 @@ export default function HomePage() {
               className='pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-emerald-300/10 blur-3xl'
             />
 
-            <div className='relative grid grid-cols-[1fr_auto] items-center gap-4 md:gap-8'>
+            <div className='relative md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-8'>
               <div>
-                <h1 className='text-4xl font-bold tracking-tight md:text-5xl'>
-                  Your visit,{' '}
-                  <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
-                    in your words.
-                  </span>
-                </h1>
+                <div className='flex items-start justify-between gap-4'>
+                  <h1 className='text-4xl font-bold tracking-tight md:text-5xl'>
+                    Your visit,{' '}
+                    <span className='bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent dark:from-emerald-400 dark:to-emerald-200'>
+                      in your words.
+                    </span>
+                  </h1>
+                  {/* Mobile-only logo inline with the heading. Desktop uses the
+                      standalone logo column below. */}
+                  <div className='relative shrink-0 md:hidden'>
+                    <div
+                      aria-hidden
+                      className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
+                    />
+                    <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-3 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
+                      <Icons.heartbeat
+                        className='size-12 text-emerald-600 dark:text-emerald-400'
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </div>
+                </div>
                 <p className='text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed'>
                   Lumen Health is a patient-facing post-visit companion. It translates the clinical
                   note your doctor wrote into plain language, with action items you can check off,
@@ -118,15 +134,15 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className='flex justify-center md:justify-end'>
+              <div className='hidden md:flex md:justify-end'>
                 <div className='relative'>
                   <div
                     aria-hidden
                     className='absolute inset-0 -z-10 rounded-full bg-emerald-400/30 blur-3xl'
                   />
-                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-3 shadow-xl shadow-emerald-600/10 backdrop-blur-md md:p-7 dark:border-emerald-800/40 dark:bg-card/60'>
+                  <div className='rounded-2xl border border-emerald-200/70 bg-white/70 p-7 shadow-xl shadow-emerald-600/10 backdrop-blur-md dark:border-emerald-800/40 dark:bg-card/60'>
                     <Icons.heartbeat
-                      className='size-12 text-emerald-600 md:size-24 dark:text-emerald-400'
+                      className='size-24 text-emerald-600 dark:text-emerald-400'
                       strokeWidth={1.5}
                     />
                   </div>
